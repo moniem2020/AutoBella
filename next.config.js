@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
     images: {
         unoptimized: true,
     },
+    // output: 'standalone', // Commenting this out to try standard build
 };
 
 module.exports = nextConfig;
