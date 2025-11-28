@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
     try {
@@ -26,13 +26,20 @@ ${data.email ? `📧 *Email:* ${data.email}\n` : ''}
         // Your WhatsApp number
         const whatsappNumber = '201009441336';
 
-        // --- EMAIL NOTIFICATION via Resend ---
-        const resendApiKey = process.env.RESEND_API_KEY;
+        // --- EMAIL NOTIFICATION via Nodemailer (Gmail) ---
+        const gmailUser = process.env.GMAIL_USER;
+        const gmailPass = process.env.GMAIL_APP_PASSWORD;
 
-        if (resendApiKey) {
-            console.log('Attempting to send email notification with Resend...');
+        if (gmailUser && gmailPass) {
+            console.log('Attempting to send email notification with Nodemailer...');
             try {
-                const resend = new Resend(resendApiKey);
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: gmailUser,
+                        pass: gmailPass,
+                    },
+                });
 
                 const emailHtml = `
                     <h2>New Membership Registration</h2>
@@ -43,19 +50,19 @@ ${data.email ? `📧 *Email:* ${data.email}\n` : ''}
                     <p><strong>Details:</strong> ${selectedPlan.washes} - ${selectedPlan.price}</p>
                 `;
 
-                const emailResult = await resend.emails.send({
-                    from: 'AutoBella Memberships <onboarding@resend.dev>',
+                const info = await transporter.sendMail({
+                    from: `"AutoBella Memberships" <${gmailUser}>`,
                     to: 'moniemghazal@gmail.com',
                     subject: `New Membership - ${selectedPlan.name} - ${data.name}`,
                     html: emailHtml,
                 });
 
-                console.log('Email notification sent via Resend. ID:', emailResult.data?.id);
+                console.log('Email notification sent via Nodemailer. MessageId:', info.messageId);
             } catch (emailError) {
                 console.error('Error sending email notification:', emailError);
             }
         } else {
-            console.warn('WARNING: RESEND_API_KEY environment variable is missing. Email notification will NOT be sent.');
+            console.warn('WARNING: GMAIL_USER or GMAIL_APP_PASSWORD environment variable is missing. Email notification will NOT be sent.');
         }
         // ----------------------------------------------
 
@@ -76,4 +83,5 @@ ${data.email ? `📧 *Email:* ${data.email}\n` : ''}
         );
     }
 }
+
 
