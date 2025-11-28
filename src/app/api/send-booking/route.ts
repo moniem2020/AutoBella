@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 export async function POST(request: NextRequest) {
     try {
@@ -20,29 +21,42 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
         // Your WhatsApp number
         const whatsappNumber = '201009441336';
 
-        // --- FREE WHATSAPP NOTIFICATION (CallMeBot) ---
-        const apiKey = process.env.CALLMEBOT_API_KEY;
+        // --- EMAIL NOTIFICATION via Resend ---
+        const resendApiKey = process.env.RESEND_API_KEY;
 
-        if (apiKey) {
+        if (resendApiKey) {
+            console.log('Attempting to send email notification with Resend...');
             try {
-                // Encode the message for URL
-                const encodedMessage = encodeURIComponent(message);
-                const callMeBotUrl = `https://api.callmebot.com/whatsapp.php?phone=${whatsappNumber}&text=${encodedMessage}&apikey=${apiKey}`;
+                const resend = new Resend(resendApiKey);
 
-                // Send the request to CallMeBot
-                const notificationResponse = await fetch(callMeBotUrl);
+                const emailHtml = `
+                    <h2>New Booking Request</h2>
+                    <p><strong>Name:</strong> ${data.name}</p>
+                    <p><strong>Phone:</strong> ${data.phone}</p>
+                    ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
+                    <p><strong>Car Type:</strong> ${data.carType}</p>
+                    <p><strong>Area:</strong> ${data.area}</p>
+                    <p><strong>Address:</strong> ${data.address}</p>
+                    <p><strong>Service:</strong> ${data.service}</p>
+                    <p><strong>Date:</strong> ${data.date}</p>
+                    <p><strong>Time:</strong> ${data.timeSlot}</p>
+                    ${data.notes ? `<p><strong>Notes:</strong> ${data.notes}</p>` : ''}
+                `;
 
-                if (notificationResponse.ok) {
-                    console.log('WhatsApp notification sent via CallMeBot');
-                } else {
-                    console.error('Failed to send WhatsApp notification via CallMeBot');
-                }
-            } catch (notifyError) {
-                console.error('Error sending WhatsApp notification:', notifyError);
-                // We don't block the success response if notification fails
+                const emailResult = await resend.emails.send({
+                    from: 'AutoBella Bookings <onboarding@resend.dev>',
+                    to: 'moniemghazal@gmail.com',
+                    subject: `New Booking - ${data.name}`,
+                    html: emailHtml,
+                });
+
+                console.log('Email notification sent via Resend. ID:', emailResult.data?.id);
+            } catch (emailError) {
+                console.error('Error sending email notification:', emailError);
+                // We don't block the success response if email fails
             }
         } else {
-            console.log('CALLMEBOT_API_KEY not found. Skipping automatic WhatsApp notification.');
+            console.warn('WARNING: RESEND_API_KEY environment variable is missing. Email notification will NOT be sent.');
         }
         // ----------------------------------------------
 
@@ -63,3 +77,4 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
         );
     }
 }
+
