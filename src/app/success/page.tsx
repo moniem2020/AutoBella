@@ -14,8 +14,8 @@ const SuccessContent = () => {
 
     const whatsappNumber = '201009441336';
     const messageText = isMembership
-        ? '📍 I would like to share my location for the membership service'
-        : '📍 I would like to share my location for the mobile wash service';
+        ? 'I would like to share my location for the membership service'
+        : 'I would like to share my location for the mobile wash service';
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
 
