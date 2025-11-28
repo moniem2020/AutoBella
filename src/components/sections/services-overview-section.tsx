@@ -40,7 +40,7 @@ const ServicesOverviewSection = () => {
             AutoBella Services
           </h1>
           <p
-            className="font-body mx-auto max-w-[800px] text-xl text-white/80"
+            className="font-body mx-auto max-w-[800px] text-xl text-white/80 mb-16"
             style={{ lineHeight: 1.8 }}
           >
             Enjoy the freedom to choose the perfect car care for you — book a
@@ -48,6 +48,39 @@ const ServicesOverviewSection = () => {
             membership packages for regular care. Whether one wash or many,
             we've got you covered.
           </p>
+
+          {/* Car Wash Images - 3 Image Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105">
+              <Image
+                src="/car-wash-hands.png"
+                alt="Professional car washing"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover"
+              />
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105">
+              <Image
+                src="/car-wash-2.jpg"
+                alt="Mobile car detailing"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover"
+              />
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105">
+              <Image
+                src="/car-wash-3.jpg"
+                alt="Premium car wash service"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover"
+              />
+            </div>
+          </div>
 
           <div className="mt-12 flex flex-col items-center justify-center gap-6 md:flex-row">
             <Link

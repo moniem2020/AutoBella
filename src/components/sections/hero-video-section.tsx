@@ -83,6 +83,53 @@ const customStyles = `
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+  @keyframes foam-rise {
+    0% {
+      transform: translateY(100vh) translateX(0) scale(0.5);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(50vh) translateX(var(--foam-move-x, 30px)) scale(1);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(-20vh) translateX(var(--foam-move-x, 50px)) scale(0.3);
+      opacity: 0;
+    }
+  }
+
+  @keyframes bubble-float {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-30px) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-60px) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes water-drip {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
   
   .animate-text-reveal {
     animation: fade-in-slide-up 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -116,6 +163,18 @@ const customStyles = `
   .rotate-slow {
     animation: rotate-slow 20s linear infinite;
   }
+
+  .foam-bubble {
+    animation: foam-rise linear infinite;
+  }
+
+  .floating-bubble {
+    animation: bubble-float ease-in-out infinite;
+  }
+
+  .water-drop {
+    animation: water-drip linear infinite;
+  }
 `;
 
 const HeroVideoSection = () => {
@@ -136,6 +195,82 @@ const HeroVideoSection = () => {
         <div className="absolute inset-0 z-5">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-[#C9A961]/20 via-transparent to-transparent blur-3xl" />
           <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-radial from-[#5FA8A8]/15 via-transparent to-transparent blur-3xl" />
+        </div>
+
+        {/* Foam Bubbles - Car Wash Effect */}
+        <div className="absolute inset-0 z-12 pointer-events-none overflow-hidden">
+          {[...Array(25)].map((_, i) => (
+            <div
+              key={`foam-${i}`}
+              className="foam-bubble absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                width: `${20 + Math.random() * 80}px`,
+                height: `${20 + Math.random() * 80}px`,
+                animationDuration: `${8 + Math.random() * 6}s`,
+                animationDelay: `${Math.random() * 8}s`,
+                bottom: '-100px',
+                '--foam-move-x': `${(Math.random() - 0.5) * 100}px`,
+              } as React.CSSProperties}
+            >
+              <div
+                className="w-full h-full rounded-full bg-white/30 backdrop-blur-sm border border-white/40"
+                style={{
+                  background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.2))',
+                  boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3), 0 0 20px rgba(201,169,97,0.2)',
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Smaller Floating Bubbles */}
+        <div className="absolute inset-0 z-13 pointer-events-none overflow-hidden">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={`bubble-${i}`}
+              className="floating-bubble absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${10 + Math.random() * 30}px`,
+                height: `${10 + Math.random() * 30}px`,
+                animationDuration: `${3 + Math.random() * 3}s`,
+                animationDelay: `${Math.random() * 3}s`,
+              }}
+            >
+              <div
+                className="w-full h-full rounded-full bg-white/40 backdrop-blur-sm"
+                style={{
+                  background: 'radial-gradient(circle at 40% 40%, rgba(255,255,255,0.7), rgba(255,255,255,0.1))',
+                  boxShadow: 'inset 0 0 15px rgba(255,255,255,0.4)',
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Water Droplets */}
+        <div className="absolute inset-0 z-11 pointer-events-none overflow-hidden">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={`drop-${i}`}
+              className="water-drop absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+                animationDelay: `${Math.random() * 4}s`,
+                top: '-100px',
+              }}
+            >
+              <div
+                className="w-1 h-3 rounded-full bg-gradient-to-b from-white/60 to-blue-300/40"
+                style={{
+                  boxShadow: '0 0 8px rgba(255,255,255,0.5)',
+                }}
+              />
+            </div>
+          ))}
         </div>
 
         {/* Decorative Car Logo - Large Background with Rotation */}
