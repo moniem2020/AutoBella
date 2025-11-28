@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
     try {
         const data = await request.json();
 
-        // Format the message for WhatsApp
+        // Format the message for WhatsApp (still used for redirect)
         const message = `🚗 *New Booking Request*
 
 👤 *Name:* ${data.name}
@@ -21,13 +21,20 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
         // Your WhatsApp number
         const whatsappNumber = '201009441336';
 
-        // --- EMAIL NOTIFICATION via Resend ---
-        const resendApiKey = process.env.RESEND_API_KEY;
+        // --- EMAIL NOTIFICATION via Nodemailer (Gmail) ---
+        const gmailUser = process.env.GMAIL_USER;
+        const gmailPass = process.env.GMAIL_APP_PASSWORD;
 
-        if (resendApiKey) {
-            console.log('Attempting to send email notification with Resend...');
+        if (gmailUser && gmailPass) {
+            console.log('Attempting to send email notification with Nodemailer...');
             try {
-                const resend = new Resend(resendApiKey);
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: gmailUser,
+                        pass: gmailPass,
+                    },
+                });
 
                 const emailHtml = `
                     <h2>New Booking Request</h2>
@@ -43,25 +50,23 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
                     ${data.notes ? `<p><strong>Notes:</strong> ${data.notes}</p>` : ''}
                 `;
 
-                const emailResult = await resend.emails.send({
-                    from: 'AutoBella Bookings <onboarding@resend.dev>',
+                const info = await transporter.sendMail({
+                    from: `"AutoBella Bookings" <${gmailUser}>`,
                     to: 'moniemghazal@gmail.com',
                     subject: `New Booking - ${data.name}`,
                     html: emailHtml,
                 });
 
-                console.log('Email notification sent via Resend. ID:', emailResult.data?.id);
+                console.log('Email notification sent via Nodemailer. MessageId:', info.messageId);
             } catch (emailError) {
                 console.error('Error sending email notification:', emailError);
-                // We don't block the success response if email fails
             }
         } else {
-            console.warn('WARNING: RESEND_API_KEY environment variable is missing. Email notification will NOT be sent.');
+            console.warn('WARNING: GMAIL_USER or GMAIL_APP_PASSWORD environment variable is missing. Email notification will NOT be sent.');
         }
         // ----------------------------------------------
 
         console.log('Booking received:', data);
-        console.log('WhatsApp message:', message);
 
         return NextResponse.json({
             success: true,
@@ -77,4 +82,5 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
         );
     }
 }
+
 
