@@ -143,13 +143,9 @@ const ContactPageSection = () => {
           {/* Right Side: Contact Info (45%) */}
           <div className="w-full lg:w-[45%] mt-12 lg:mt-0">
             <div className="space-y-4">
-              <a href="tel:+201044011477" className="bg-white/5 p-6 rounded-lg flex items-center gap-4 border border-[#C9A961]/20 hover:bg-white/10 hover:border-[#C9A961]/40 transition-all duration-300">
+              <a href="tel:+201556028198" className="bg-white/5 p-6 rounded-lg flex items-center gap-4 border border-[#C9A961]/20 hover:bg-white/10 hover:border-[#C9A961]/40 transition-all duration-300">
                 <Phone className="h-6 w-6 text-[#C9A961]" />
-                <span className="text-white">+201044011477</span>
-              </a>
-              <a href="mailto:contact@autobella.com" className="bg-white/5 p-6 rounded-lg flex items-center gap-4 border border-[#C9A961]/20 hover:bg-white/10 hover:border-[#C9A961]/40 transition-all duration-300">
-                <Mail className="h-6 w-6 text-[#C9A961]" />
-                <span className="text-white">contact@autobella.com</span>
+                <span className="text-white">01556028198</span>
               </a>
               <div className="bg-white/5 p-6 rounded-lg flex items-center gap-4 border border-[#C9A961]/20">
                 <MapPin className="h-6 w-6 text-[#C9A961]" />

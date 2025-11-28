@@ -106,22 +106,84 @@ const AboutPageSection = () => {
         </section>
 
         {/* Values Section */}
-        <section className="bg-black py-24 sm:py-32">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-6xl text-[#C9A961]">Our Values</h2>
+        <section className="bg-black py-24 sm:py-32 relative overflow-hidden">
+          {/* Decorative car logo */}
+          <div className="absolute bottom-10 right-10 opacity-5 pointer-events-none hidden lg:block">
+            <Image
+              src="/autobella-logo-car.png"
+              alt=""
+              width={300}
+              height={300}
+              className="w-[300px] h-auto"
+            />
+          </div>
+
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-20">
+              <h2 className="font-display text-4xl md:text-6xl text-[#C9A961] mb-6">Our Values</h2>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                At AutoBella, we're driven by excellence, convenience, and sustainability
+              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <div key={index} className="bg-white/5 backdrop-blur-sm border border-[#C9A961]/20 p-8 rounded-2xl text-center shadow-lg transform hover:-translate-y-2 transition-all duration-300 hover:border-[#C9A961]/40 hover:bg-white/10">
-                    <Icon className="mx-auto h-12 w-12 text-[#C9A961] mb-6" strokeWidth={1.5} />
-                    <h3 className="font-body text-2xl font-semibold text-white mb-4">{value.title}</h3>
-                    <p className="text-white/70 leading-relaxed">{value.description}</p>
+
+            {/* Images Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {/* Value 1: Quality Service */}
+              <div>
+                <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105 mb-6">
+                  <Image
+                    src="/car-wash-hands.png"
+                    alt="Quality Service"
+                    width={400}
+                    height={300}
+                    className="w-full h-72 object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6">
+                    <h3 className="font-display text-2xl text-[#C9A961] mb-2">Quality Service</h3>
                   </div>
-                );
-              })}
+                </div>
+                <p className="text-white/80 text-lg leading-relaxed text-center">
+                  We are committed to delivering a flawless finish every time, using only the best products and techniques.
+                </p>
+              </div>
+
+              {/* Value 2: Convenience */}
+              <div>
+                <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105 mb-6">
+                  <Image
+                    src="/car-wash-2.jpg"
+                    alt="Convenience"
+                    width={400}
+                    height={300}
+                    className="w-full h-72 object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6">
+                    <h3 className="font-display text-2xl text-[#C9A961] mb-2">Convenience</h3>
+                  </div>
+                </div>
+                <p className="text-white/80 text-lg leading-relaxed text-center">
+                  Your time is precious. We come to you, on your schedule, making car care completely effortless.
+                </p>
+              </div>
+
+              {/* Value 3: Eco-Friendly */}
+              <div>
+                <div className="relative rounded-2xl overflow-hidden border-2 border-[#C9A961]/30 shadow-[0_0_30px_rgba(201,169,97,0.2)] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] transition-all duration-300 hover:scale-105 mb-6">
+                  <Image
+                    src="/car-wash-3.jpg"
+                    alt="Eco-Friendly"
+                    width={400}
+                    height={300}
+                    className="w-full h-72 object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6">
+                    <h3 className="font-display text-2xl text-[#C9A961] mb-2">Eco-Friendly</h3>
+                  </div>
+                </div>
+                <p className="text-white/80 text-lg leading-relaxed text-center">
+                  We protect your car and our planet by using water-saving methods and biodegradable supplies.
+                </p>
+              </div>
             </div>
           </div>
         </section>

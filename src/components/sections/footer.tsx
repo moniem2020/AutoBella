@@ -79,10 +79,7 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Contact Us</h3>
                         <div className="text-white/70 space-y-3 text-base">
                             <p>
-                                Phone: <a href="tel:+201044011477" className="hover:text-[#C9A961] transition-colors">+201044011477</a>
-                            </p>
-                            <p>
-                                Email: <a href="mailto:contact@autobella.com" className="hover:text-[#C9A961] transition-colors">contact@autobella.com</a>
+                                Phone: <a href="tel:+201556028198" className="hover:text-[#C9A961] transition-colors">01556028198</a>
                             </p>
                             <p>
                                 Location: Cairo, Egypt
