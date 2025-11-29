@@ -57,6 +57,12 @@ export async function POST(request: NextRequest) {
                 }
                 break;
 
+            case 'ultimate-care':
+                // Increment Ultimate Care counter (prefix with C13)
+                const ultimateCareCounter = await redis.incr('ultimate_care_counter');
+                bookingId = `C13${ultimateCareCounter}`;
+                break;
+
             default:
                 return NextResponse.json(
                     { success: false, error: 'Invalid type' },

@@ -148,7 +148,7 @@ const ServicesDetailSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
             {/* Client Memberships */}
             <div className="relative flex flex-col bg-white/5 backdrop-blur-sm p-8 md:p-10 rounded-[20px] border border-[#C9A961]/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-[#C9A961]/40">
               <div className="text-center mb-6">
@@ -224,6 +224,45 @@ const ServicesDetailSection = () => {
 
               <Link href="/b2b-request" className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center">
                 Request Quote
+              </Link>
+            </div>
+
+            {/* Ultimate Car Care */}
+            <div className="relative flex flex-col bg-white/5 backdrop-blur-sm p-8 md:p-10 rounded-[20px] border border-[#C9A961]/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-[#C9A961]/40">
+              <div className="text-center mb-6">
+                <h3 className="font-display text-4xl text-white mb-4">Ultimate Car Care</h3>
+                <p className="text-white/80 text-lg leading-relaxed mb-4">
+                  Professional car detailing, polishing, and restoration services. From paint correction to stain removal, we bring your car back to life.
+                </p>
+                <p className="text-[#C9A961] text-xl font-semibold mb-2" dir="rtl">
+                  العناية الفائقة بالسيارة
+                </p>
+                <p className="text-white/70 text-base" dir="rtl">
+                  خدمات تجميل وتلميع وإصلاح السيارات الاحترافية
+                </p>
+              </div>
+
+              <div className="space-y-3 mb-6 flex-grow text-left">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Polish Section (قسم البوليش)</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Car Care Section (قسم الكار كير)</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Removal Section (قسم الازالات)</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Starting from 650 EGP</span>
+                </div>
+              </div>
+
+              <Link href="/ultimate-care" className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center">
+                Book Now
               </Link>
             </div>
           </div>
