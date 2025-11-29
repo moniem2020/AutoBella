@@ -1,57 +1,105 @@
 "use client";
 
-import React, { useState } from 'react';
-import { User, Phone, Mail, Check } from 'lucide-react';
+import React, { useState, Suspense } from 'react';
+import { User, Phone, Mail } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const membershipPlans = [
     {
         id: 'basic',
         name: 'Basic Plan',
-        washes: '3 washes',
-        price: 'EGP 540',
+        washes: '3 washes/month',
+        prices: {
+            standard: 450,
+            premium: 540,
+        },
     },
     {
         id: 'plus',
         name: 'Plus Plan',
-        washes: '4 washes',
-        price: 'EGP 720',
+        washes: '4 washes/month',
+        prices: {
+            standard: 600,
+            premium: 720,
+        },
         featured: true,
     },
     {
         id: 'elite',
         name: 'Elite Plan',
-        washes: '6 washes',
-        price: 'EGP 1050',
+        washes: '6 washes/month',
+        prices: {
+            standard: 875,
+            premium: 1050,
+        },
     },
 ];
 
-const MembershipRegistrationSection = () => {
+const MembershipRegistrationForm = () => {
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    // Get plan and type from URL parameters
+    const urlPlan = searchParams.get('plan') || 'plus';
+    const urlType = searchParams.get('type') || 'premium';
+
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
         email: '',
-        membership: 'plus',
+        membership: urlPlan,
+        washType: urlType,
     });
 
     const [loading, setLoading] = useState(false);
+
+    // Get selected plan details
+    const selectedPlan = membershipPlans.find(p => p.id === formData.membership) || membershipPlans[1];
+    const selectedPrice = selectedPlan.prices[formData.washType as 'standard' | 'premium'];
+    const washTypeLabel = formData.washType === 'standard' ? 'Standard Wash (Exterior Only)' : 'Premium Wash (Interior + Exterior)';
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
         try {
+            // Generate membership ID from Vercel KV
+            const idResponse = await fetch('/api/generate-booking-id', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type: 'membership' }),
+            });
+
+            if (!idResponse.ok) {
+                throw new Error('Failed to generate membership ID');
+            }
+
+            const { bookingId } = await idResponse.json();
+
+            // Prepare data with full details
+            const submissionData = {
+                ...formData,
+                bookingId,
+                planName: selectedPlan.name,
+                washTypeLabel,
+                price: selectedPrice,
+            };
+
             const response = await fetch('/api/send-membership', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(submissionData),
             });
 
             if (response.ok) {
+                // Store membership data in sessionStorage for success page
+                sessionStorage.setItem('membershipData', JSON.stringify(submissionData));
+
                 // Redirect to success page
                 router.push('/success?type=membership');
             } else {
@@ -89,9 +137,14 @@ const MembershipRegistrationSection = () => {
                     <h1 className="font-display text-[#C9A961] text-5xl md:text-[4.5rem] leading-none mb-4">
                         Membership Registration
                     </h1>
-                    <p className="font-body text-xl text-white/80">
-                        Join AutoBella and enjoy exclusive benefits
+                    <p className="font-body text-xl text-white/80 mb-4">
+                        Complete your registration for {selectedPlan.name}
                     </p>
+                    <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[#C9A961]/30">
+                        <p className="text-[#C9A961] font-semibold text-lg">
+                            {washTypeLabel} - EGP {selectedPrice}/month
+                        </p>
+                    </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm border border-[#C9A961]/20 rounded-[20px] p-8 md:p-12 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
@@ -136,7 +189,7 @@ const MembershipRegistrationSection = () => {
                         <div>
                             <label htmlFor="email" className="flex items-center text-white/90 font-medium mb-2">
                                 <Mail className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Email
+                                Email <span className="text-white/40 text-sm ml-1">(Optional)</span>
                             </label>
                             <input
                                 type="email"
@@ -147,65 +200,6 @@ const MembershipRegistrationSection = () => {
                                 className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                 placeholder="your.email@example.com"
                             />
-                        </div>
-
-                        {/* Membership Selection */}
-                        <div>
-                            <label className="flex items-center text-white/90 font-medium mb-4">
-                                Select Membership <span className="text-[#C9A961] ml-1">*</span>
-                            </label>
-                            <div className="space-y-3">
-                                {membershipPlans.map((plan) => (
-                                    <label
-                                        key={plan.id}
-                                        className={`relative flex items-start p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${formData.membership === plan.id
-                                                ? 'border-[#C9A961] bg-[#C9A961]/10'
-                                                : 'border-[#C9A961]/20 bg-white/5 hover:border-[#C9A961]/40 hover:bg-white/10'
-                                            }`}
-                                    >
-                                        <input
-                                            type="radio"
-                                            name="membership"
-                                            value={plan.id}
-                                            checked={formData.membership === plan.id}
-                                            onChange={handleChange}
-                                            className="sr-only"
-                                        />
-                                        <div className="flex items-center justify-between w-full">
-                                            <div className="flex items-start">
-                                                <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 mr-4 mt-0.5 flex items-center justify-center transition-colors ${formData.membership === plan.id
-                                                        ? 'border-[#C9A961] bg-[#C9A961]'
-                                                        : 'border-white/30'
-                                                    }`}>
-                                                    {formData.membership === plan.id && (
-                                                        <Check className="w-3 h-3 text-black" strokeWidth={3} />
-                                                    )}
-                                                </div>
-                                                <div>
-                                                    <div className="flex items-center gap-3">
-                                                        <span className="text-white font-semibold text-lg">
-                                                            {plan.name}
-                                                        </span>
-                                                        {plan.featured && (
-                                                            <span className="bg-[#C9A961] text-black text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">
-                                                                Popular
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                    <p className="text-white/60 text-sm mt-1">
-                                                        {plan.washes}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="text-right">
-                                                <span className="text-[#C9A961] font-bold text-xl">
-                                                    {plan.price}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </label>
-                                ))}
-                            </div>
                         </div>
 
                         {/* Submit Button */}
@@ -224,6 +218,14 @@ const MembershipRegistrationSection = () => {
                 </p>
             </div>
         </section>
+    );
+};
+
+const MembershipRegistrationSection = () => {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><div className="text-[#C9A961]">Loading...</div></div>}>
+            <MembershipRegistrationForm />
+        </Suspense>
     );
 };
 

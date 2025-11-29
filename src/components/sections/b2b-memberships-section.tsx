@@ -1,18 +1,44 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, User, CalendarDays, FileText, Leaf, CheckCircle2 } from 'lucide-react';
+import { Building2, Users, ShoppingBag, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const benefits = [
-  { icon: Briefcase, text: 'Flexible fleet packages' },
-  { icon: User, text: 'Dedicated account manager' },
-  { icon: CalendarDays, text: 'Priority scheduling' },
-  { icon: FileText, text: 'Custom billing solutions' },
-  { icon: Leaf, text: 'Eco-friendly options' },
+const plans = [
+  {
+    icon: Building2,
+    name: 'Residential Compound',
+    description: 'Complete car care solutions for residential communities',
+    features: [
+      'Regular scheduled visits',
+      'Discounted rates for residents',
+      'Dedicated service team',
+      'Flexible monthly packages',
+    ],
+  },
+  {
+    icon: Users,
+    name: 'Company Fleet',
+    description: 'Professional fleet management for corporate vehicles',
+    features: [
+      'Volume-based pricing',
+      'Priority scheduling',
+      'Detailed service reports',
+      'Account manager support',
+    ],
+  },
+  {
+    icon: ShoppingBag,
+    name: 'Mall Services',
+    description: 'Premium car wash services for shopping mall visitors',
+    features: [
+      'On-site service stations',
+      'Quick turnaround times',
+      'Premium service packages',
+      'Partnership opportunities',
+    ],
+  },
 ];
-
-const companyLogos = ['FleetCo', 'LogistiX', 'DriveNow', 'CorpCars', 'GreenVan', 'BizMove'];
 
 const B2bMembershipsSection = () => {
   const checkerboardPattern = `url("data:image/svg+xml,%3csvg width='64' height='64' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='32' height='32' x='0' y='0' fill='%23C9A961' fill-opacity='0.1' /%3e%3crect width='32' height='32' x='32' y='0' fill='transparent' /%3e%3crect width='32' height='32' x='0' y='32' fill='transparent' /%3e%3crect width='32' height='32' x='32' y='32' fill='%23C9A961' fill-opacity='0.1' /%3e%3c/svg%3e")`;
@@ -48,73 +74,51 @@ const B2bMembershipsSection = () => {
             B2B Memberships
           </h1>
           <p className="text-lg md:text-xl text-white/70 mt-4 font-body">
-            Fleet solutions for businesses
+            Custom fleet solutions for businesses and communities
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-10 gap-12 lg:gap-16 items-start">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className="relative flex flex-col bg-white/5 backdrop-blur-sm p-8 rounded-[20px] border border-[#C9A961]/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10"
+            >
+              <div className="w-16 h-16 bg-[#C9A961]/10 rounded-full flex items-center justify-center mb-6 border border-[#C9A961]/30">
+                <plan.icon className="w-8 h-8 text-[#C9A961]" />
+              </div>
 
-          <div className="lg:col-span-6 space-y-16">
-            <div>
-              <h2 className="font-display text-4xl text-white mb-8">Corporate Benefits</h2>
-              <ul className="space-y-6">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center gap-6">
-                    <benefit.icon className="h-10 w-10 text-[#C9A961] shrink-0" />
-                    <span className="text-[1.125rem] leading-tight text-white/90 font-medium">{benefit.text}</span>
+              <h3 className="font-display text-3xl text-white mb-4">{plan.name}</h3>
+              <p className="text-white/70 text-base mb-6 leading-relaxed">{plan.description}</p>
+
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <CheckCircle2 className="h-5 w-5 text-[#C9A961] mr-3 mt-0.5 shrink-0" />
+                    <span className="text-white/80 text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
+          ))}
+        </div>
 
-            <div>
-              <p className="text-center text-white/60 font-semibold mb-6">Trusted by 50+ companies</p>
-              <div className="grid grid-cols-3 md:grid-cols-6 gap-4 items-center">
-                {companyLogos.map((logo, index) => (
-                  <div key={index} className="flex justify-center items-center p-4 bg-white/5 rounded-lg h-20 transition-all duration-300 hover:bg-white/10 hover:shadow-md border border-white/10">
-                    <span className="text-sm font-bold text-white/50">{logo}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white/5 p-8 rounded-lg shadow-sm backdrop-blur-sm border border-[#C9A961]/20">
-              <blockquote className="text-center">
-                <p className="text-lg italic text-white/90 leading-relaxed">"AutoBella's B2B service has streamlined our fleet management. Their reliability and quality are unmatched."</p>
-                <footer className="mt-4 text-sm font-semibold text-[#C9A961]">— Alex Rivera, Operations at FleetCo</footer>
-              </blockquote>
-            </div>
-
-          </div>
-
-          <div className="lg:col-span-4 lg:sticky lg:top-24">
-            <Card className="bg-black/50 backdrop-blur-md rounded-lg shadow-lg border border-[#C9A961]/20">
-              <CardHeader>
-                <CardTitle className="font-display text-3xl text-center text-white">Custom Quote</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-white/70 text-center mb-6">Let's build a plan that's perfect for your fleet's needs.</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-[#C9A961] mr-3 mt-1 shrink-0" />
-                    <span className="text-white/90">Access to all corporate benefits</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-[#C9A961] mr-3 mt-1 shrink-0" />
-                    <span className="text-white/90">Personalized pricing based on fleet size & frequency</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-[#C9A961] mr-3 mt-1 shrink-0" />
-                    <span className="text-white/90">Volume discounts and special offers</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-[#C9A961] mr-3 mt-1 shrink-0" />
-                    <span className="text-white/90">Detailed service reports and analytics</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold tracking-wide" size="lg">Request Proposal</Button>
-              </CardContent>
-            </Card>
+        {/* Custom Quote CTA */}
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-black/50 backdrop-blur-md rounded-[20px] shadow-lg border border-[#C9A961]/30 p-8 md:p-12 text-center">
+            <h2 className="font-display text-3xl md:text-4xl text-white mb-4">Get Your Custom Quote</h2>
+            <p className="text-white/70 text-lg mb-8">
+              Each business has unique needs. Let us create a tailored plan with custom pricing that works for you.
+            </p>
+            <p className="text-white/60 text-base mb-8">
+              Our sales team will discuss your requirements and provide personalized pricing based on your fleet size, service frequency, and specific needs.
+            </p>
+            <Link
+              href="/b2b-request"
+              className="inline-block bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold px-12 py-4 rounded-full uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg"
+            >
+              Request Custom Quote
+            </Link>
           </div>
         </div>
       </div>

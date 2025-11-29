@@ -15,13 +15,14 @@ const services = [
       'Specialized Shampoo wash (غسيل بشامبو مخصص)',
       'Rinsing (شطف بالمياه)',
       'Car Drying (تجفيف السيارة)',
+      'Tire Shine (تلميع الكاوتش)'
     ],
     isFeatured: false,
   },
   {
     name: 'Premium Wash',
     subtitle: 'Inside & Out (غسيل داخلي وخارجي)',
-    price: '230',
+    price: '250',
     features: [
       'Pre-washing Foam (رغوة ما قبل الغسيل)',
       'Specialized Shampoo wash (غسيل بشامبو مخصص)',
@@ -29,6 +30,7 @@ const services = [
       'Car Drying (تجفيف السيارة)',
       'Interior Vacuum & Wipe Down (تنظيف داخلي و شفط)',
       'Tire Shine (تلميع الكاوتش)',
+      'Car Trunk Cleaning (تنظيف شنطة السيارة)'
     ],
     isFeatured: true,
   },
@@ -54,6 +56,14 @@ const testimonials = [
   {
     name: 'ياسمين خالد',
     review: 'التعامل راقي والنتيجة فوق التوقعات. هستخدم الخدمة تاني أكيد',
+  },
+  {
+    name: 'سيد علي',
+    review: 'جميل جدا',
+  },
+  {
+    name: 'سامي شاكر',
+    review: 'خدمة ممتازة',
   },
 ];
 

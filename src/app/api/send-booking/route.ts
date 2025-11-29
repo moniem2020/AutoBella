@@ -38,6 +38,8 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
 
                 const emailHtml = `
                     <h2>New Booking Request</h2>
+                    <p><strong>Booking ID:</strong> #${data.bookingId}</p>
+                    <hr style="margin: 20px 0; border: 1px solid #C9A961;" />
                     <p><strong>Name:</strong> ${data.name}</p>
                     <p><strong>Phone:</strong> ${data.phone}</p>
                     ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
