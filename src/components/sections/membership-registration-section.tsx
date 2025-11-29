@@ -11,7 +11,7 @@ const membershipPlans = [
         name: 'Basic Plan',
         washes: '8 washes/month (2 per week)',
         prices: {
-            standard: 600,
+            standard: 650,
         },
     },
     {
@@ -19,7 +19,7 @@ const membershipPlans = [
         name: 'Plus Plan',
         washes: '10 Standard + 2 Premium washes/month',
         prices: {
-            premium: 750,
+            premium: 850,
         },
         featured: true,
     },
@@ -28,7 +28,7 @@ const membershipPlans = [
         name: 'Elite Plan',
         washes: '18 Standard + 2 Premium washes/month',
         prices: {
-            premium: 1300,
+            premium: 1350,
         },
     },
 ];

@@ -7,40 +7,31 @@ const plans = [
   {
     id: 'basic',
     name: 'Basic Plan',
-    washes: '3 washes/month',
+    washes: '8 washes/month (2 per week)',
     descriptionAr: 'حافظ على نظافة عربيتك بسهولة.',
     descriptionEn: 'Keep your car clean easily.',
-    note: 'Pre-booking required – choose Exterior Only or Interior + Exterior',
-    priceRange: {
-      min: 450,  // Standard wash
-      max: 540   // Premium wash
-    },
+    note: 'Standard Wash Only',
+    price: 650,
     isFeatured: false,
   },
   {
     id: 'plus',
     name: 'Plus Plan',
-    washes: '4 washes/month',
+    washes: '12 washes/month',
     descriptionAr: 'خلي عربيتك دايمًا نظيفة ولامعة كل أسبوع.',
     descriptionEn: 'Stay fresh and shiny every week.',
-    note: 'Pre-booking required – choose Exterior Only or Interior + Exterior',
-    priceRange: {
-      min: 600,  // Standard wash
-      max: 720   // Premium wash
-    },
+    note: '10 Standard + 2 Premium Washes',
+    price: 850,
     isFeatured: true,
   },
   {
     id: 'elite',
     name: 'Elite Plan',
-    washes: '6 Washes/month',
+    washes: '20 Washes/month',
     descriptionAr: 'العناية المثالية بعربيتك طول السنة.',
     descriptionEn: 'Premium care for your car, all year round.',
-    note: 'Pre-booking required – choose Exterior Only or Interior + Exterior.',
-    priceRange: {
-      min: 875,  // Standard wash
-      max: 1050  // Premium wash
-    },
+    note: '18 Standard + 2 Premium Washes',
+    price: 1350,
     isFeatured: false,
   },
 ];
@@ -109,11 +100,9 @@ const ClientMembershipsSection = () => {
                 <div className="my-6">
                   <div className="flex items-center justify-center gap-2">
                     <span className="text-xl text-white/60 align-top">EGP</span>
-                    <span className="text-5xl md:text-6xl font-bold text-[#C9A961] align-middle">{plan.priceRange.min}</span>
-                    <span className="text-3xl text-white/60 align-middle">-</span>
-                    <span className="text-5xl md:text-6xl font-bold text-[#C9A961] align-middle">{plan.priceRange.max}</span>
+                    <span className="text-5xl md:text-6xl font-bold text-[#C9A961] align-middle">{plan.price}</span>
+                    <span className="text-base text-white/60 self-end mb-2">/month</span>
                   </div>
-                  <p className="text-white/40 text-xs mt-2">Standard to Premium Wash</p>
                 </div>
               </div>
 
@@ -127,9 +116,30 @@ const ClientMembershipsSection = () => {
           ))}
         </div>
 
-        <p className="text-center text-sm text-white/50 mt-16 font-body">
-          All plans include eco-friendly products and doorstep service.
-        </p>
+        <div className="text-center mt-16 max-w-3xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-sm border border-[#C9A961] rounded-[20px] p-8 shadow-[0_0_30px_rgba(201,169,97,0.1)] relative overflow-hidden group hover:bg-white/10 transition-colors duration-300">
+            {/* Decorative corner accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#C9A961]/10 rounded-bl-[100px] -mr-10 -mt-10 transition-transform group-hover:scale-110 duration-500"></div>
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#C9A961]/10 rounded-tr-[100px] -ml-10 -mb-10 transition-transform group-hover:scale-110 duration-500"></div>
+
+            <h4 className="text-[#C9A961] font-display text-2xl mb-4 flex items-center justify-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-[#C9A961]"></span>
+              Special Offer
+              <span className="inline-block w-2 h-2 rounded-full bg-[#C9A961]"></span>
+            </h4>
+
+            <p className="text-white/90 text-lg font-body mb-3">
+              Special offers for each villa vary depending on the number of participating cars
+            </p>
+            <p className="text-white/80 text-lg font-body" dir="rtl">
+              عروض خاصه للفيلا الواحده تختلف حسب عدد عربيات المشتركه
+            </p>
+          </div>
+
+          <p className="text-sm text-white/50 mt-8">
+            All plans include eco-friendly products and doorstep service.
+          </p>
+        </div>
       </div>
     </section>
   );

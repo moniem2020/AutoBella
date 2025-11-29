@@ -36,7 +36,7 @@ export default function BasicPlanPage() {
                             <div className="my-6">
                                 <span className="text-xl text-white/60 align-top">EGP</span>
                                 <span className="text-6xl md:text-7xl font-bold text-[#C9A961] align-middle mx-2">
-                                    600
+                                    650
                                 </span>
                                 <span className="text-base text-white/60 block mt-2">/month</span>
                             </div>
