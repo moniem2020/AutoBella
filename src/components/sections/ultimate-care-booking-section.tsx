@@ -2,7 +2,7 @@
 
 import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { User, Phone, Mail, MapPin, Car, FileText, ChevronDown } from 'lucide-react';
+import { User, Phone, Mail, MapPin, Car, FileText, ChevronDown, Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
 
 const services = [
@@ -40,6 +40,18 @@ const areas = [
 
 const carTypes = ['Sedan', 'SUV', 'Hatchback', 'Coupe', 'Truck', 'Van'];
 
+const timeSlots = [
+    '10:00 AM',
+    '11:00 AM',
+    '12:00 PM',
+    '01:00 PM',
+    '02:00 PM',
+    '03:00 PM',
+    '04:00 PM',
+    '05:00 PM',
+    '06:00 PM',
+];
+
 const BookingForm = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -51,6 +63,8 @@ const BookingForm = () => {
         email: '',
         carType: '',
         service: preselectedService || '',
+        date: '',
+        timeSlot: '',
         area: '',
         address: '',
         notes: '',
@@ -243,6 +257,51 @@ const BookingForm = () => {
                                     ))}
                                 </select>
                                 <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
+                            </div>
+                        </div>
+
+                        {/* Date and Time Row */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Date */}
+                            <div>
+                                <label htmlFor="date" className="flex items-center text-white/90 font-medium mb-2">
+                                    <Calendar className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                    Preferred Date <span className="text-[#C9A961] ml-1">*</span>
+                                </label>
+                                <input
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    required
+                                    min={new Date().toISOString().split('T')[0]}
+                                    value={formData.date}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors [color-scheme:dark]"
+                                />
+                            </div>
+
+                            {/* Time Slot */}
+                            <div>
+                                <label htmlFor="timeSlot" className="flex items-center text-white/90 font-medium mb-2">
+                                    <Clock className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                    Preferred Time <span className="text-[#C9A961] ml-1">*</span>
+                                </label>
+                                <div className="relative">
+                                    <select
+                                        id="timeSlot"
+                                        name="timeSlot"
+                                        required
+                                        value={formData.timeSlot}
+                                        onChange={handleChange}
+                                        className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white appearance-none focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                    >
+                                        <option value="" className="bg-black">Select Time</option>
+                                        {timeSlots.map((slot) => (
+                                            <option key={slot} value={slot} className="bg-black">{slot}</option>
+                                        ))}
+                                    </select>
+                                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
+                                </div>
                             </div>
                         </div>
 

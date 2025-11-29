@@ -22,6 +22,8 @@ export async function POST(request: NextRequest) {
 👤 *Name:* ${data.name}
 📱 *Phone:* ${data.phone}
 ${data.email ? `📧 *Email:* ${data.email}\n` : ''}🚗 *Car Type:* ${data.carType}
+📅 *Date:* ${data.date}
+⏰ *Time:* ${data.timeSlot}
 🛠️ *Service:* ${data.serviceLabel}
 📍 *Area:* ${data.area}
 🏠 *Address:* ${data.address}
@@ -59,6 +61,8 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
                     <p><strong>Phone:</strong> ${data.phone}</p>
                     ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
                     <p><strong>Car Type:</strong> ${data.carType}</p>
+                    <p><strong>Date:</strong> ${data.date}</p>
+                    <p><strong>Time:</strong> ${data.timeSlot}</p>
                     <p><strong>Service:</strong> ${data.serviceLabel}</p>
                     <p><strong>Area:</strong> ${data.area}</p>
                     <p><strong>Address:</strong> ${data.address}</p>
