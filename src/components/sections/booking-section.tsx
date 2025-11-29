@@ -24,7 +24,7 @@ const carTypes = [
 
 const services = [
     { name: 'Standard Wash', price: 'EGP 150' },
-    { name: 'Premium Wash', price: 'EGP 230' },
+    { name: 'Premium Wash', price: 'EGP 250' },
 ];
 
 const timeSlots = [
