@@ -59,16 +59,34 @@ const BookingSection = () => {
         setLoading(true);
 
         try {
-            // Send to backend API
+            // Generate booking ID from Vercel KV
+            const idResponse = await fetch('/api/generate-booking-id', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type: 'booking' }),
+            });
+
+            if (!idResponse.ok) {
+                throw new Error('Failed to generate booking ID');
+            }
+
+            const { bookingId } = await idResponse.json();
+
+            // Send to backend API with booking ID
             const response = await fetch('/api/send-booking', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, bookingId }),
             });
 
             if (response.ok) {
+                // Store booking data in sessionStorage for success page
+                sessionStorage.setItem('bookingData', JSON.stringify({ ...formData, bookingId }));
+
                 // Redirect to success page
                 router.push('/success?type=booking');
             } else {

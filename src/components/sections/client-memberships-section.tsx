@@ -5,30 +5,42 @@ import Link from 'next/link';
 
 const plans = [
   {
+    id: 'basic',
     name: 'Basic Plan',
-    washes: '3 washes',
+    washes: '3 washes/month',
     descriptionAr: 'حافظ على نظافة عربيتك بسهولة.',
     descriptionEn: 'Keep your car clean easily.',
     note: 'Pre-booking required – choose Exterior Only or Interior + Exterior',
-    price: '540',
+    priceRange: {
+      min: 450,  // Standard wash
+      max: 540   // Premium wash
+    },
     isFeatured: false,
   },
   {
+    id: 'plus',
     name: 'Plus Plan',
-    washes: '4 washes',
+    washes: '4 washes/month',
     descriptionAr: 'خلي عربيتك دايمًا نظيفة ولامعة كل أسبوع.',
     descriptionEn: 'Stay fresh and shiny every week.',
     note: 'Pre-booking required – choose Exterior Only or Interior + Exterior',
-    price: '720',
+    priceRange: {
+      min: 600,  // Standard wash
+      max: 720   // Premium wash
+    },
     isFeatured: true,
   },
   {
+    id: 'elite',
     name: 'Elite Plan',
-    washes: '6 Washes',
+    washes: '6 Washes/month',
     descriptionAr: 'العناية المثالية بعربيتك طول السنة.',
     descriptionEn: 'Premium care for your car, all year round.',
     note: 'Pre-booking required – choose Exterior Only or Interior + Exterior.',
-    price: '1050',
+    priceRange: {
+      min: 875,  // Standard wash
+      max: 1050  // Premium wash
+    },
     isFeatured: false,
   },
 ];
@@ -95,13 +107,21 @@ const ClientMembershipsSection = () => {
                 <p className="text-white/50 text-sm mb-6 leading-relaxed">{plan.note}</p>
 
                 <div className="my-6">
-                  <span className="text-xl text-white/60 align-top">EGP</span>
-                  <span className="text-6xl md:text-7xl font-bold text-[#C9A961] align-middle mx-2">{plan.price}</span>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-xl text-white/60 align-top">EGP</span>
+                    <span className="text-5xl md:text-6xl font-bold text-[#C9A961] align-middle">{plan.priceRange.min}</span>
+                    <span className="text-3xl text-white/60 align-middle">-</span>
+                    <span className="text-5xl md:text-6xl font-bold text-[#C9A961] align-middle">{plan.priceRange.max}</span>
+                  </div>
+                  <p className="text-white/40 text-xs mt-2">Standard to Premium Wash</p>
                 </div>
               </div>
 
-              <Link href="/membership-registration" className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full mt-auto uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center">
-                Book Now
+              <Link
+                href={`/client-memberships/${plan.id}`}
+                className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full mt-auto uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center"
+              >
+                Select Plan
               </Link>
             </div>
           ))}

@@ -354,18 +354,18 @@ const HeroVideoSection = () => {
           <h1
             className="font-display text-[3rem] md:text-[4.5rem] lg:text-[6rem] leading-none tracking-tight text-white animate-text-reveal drop-shadow-[0_0_30px_rgba(201,169,97,0.3)]"
           >
-            We come We wash
+            Welcome to
           </h1>
           <h1
             className="font-display text-[3rem] md:text-[4.5rem] lg:text-[6rem] leading-none tracking-tight mt-4 text-white animate-text-reveal drop-shadow-[0_0_30px_rgba(201,169,97,0.3)]"
             style={{ animationDelay: '200ms' }}
           >
-            You Drive
+            AutoBella
           </h1>
 
           {/* Subtitle */}
           <p className="font-body text-lg md:text-xl lg:text-2xl mt-8 mb-12 max-w-3xl mx-auto leading-relaxed text-white/90 opacity-0 animate-text-reveal drop-shadow-lg" style={{ animationDelay: '400ms' }}>
-            Premium mobile car wash service that comes to you. Professional quality, eco-friendly products, and exceptional care—delivered right to your doorstep.
+            Premium mobile car wash service that comes to you. Professional quality, eco-friendly products, and exceptional care, delivered right to your doorstep.
           </p>
 
           {/* CTA Buttons */}
@@ -378,10 +378,10 @@ const HeroVideoSection = () => {
               Book A Wash
             </Link>
             <Link
-              href="/services"
+              href="/membership-registration"
               className="bg-transparent border-2 border-white/80 hover:bg-white hover:text-black text-white px-8 py-4 rounded-full font-semibold text-base md:text-lg tracking-wide shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105"
             >
-              View Services
+              Book As A Member
             </Link>
           </div>
 
