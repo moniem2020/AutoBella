@@ -61,7 +61,7 @@ const faqData = [
     id: "item-1",
     question: "Where do you operate?",
     answer:
-      "We currently operate in 1st Settlement, 5th Settlement, Qattamia, Shorouk and Madinaty.",
+      "We currently operate in Nasr City, Heliopolis, 1st Settlement, 5th Settlement, Qattamia, Shorouk and Madinaty.",
   },
   {
     id: "item-2",

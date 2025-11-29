@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
 👤 *Name:* ${data.name}
 📱 *Phone:* ${data.phone}
-${data.email ? `📧 *Email:* ${data.email}\n` : ''}
+${data.email ? `📧 *Email:* ${data.email}\n` : ''}📍 *Area:* ${data.area}
 💎 *Selected Plan:* ${selectedPlan.name}
    ${selectedPlan.washes} - ${selectedPlan.price}`;
 
@@ -54,7 +54,7 @@ ${data.email ? `📧 *Email:* ${data.email}\n` : ''}
 
                 const info = await transporter.sendMail({
                     from: `"AutoBella Memberships" <${gmailUser}>`,
-                    to: 'moniemghazal@gmail.com',
+                    to: 'autobella.cars@gmail.com',
                     subject: `New Membership - ${selectedPlan.name} - ${data.name}`,
                     html: emailHtml,
                 });

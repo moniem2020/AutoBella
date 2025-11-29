@@ -9,29 +9,31 @@ const washOptions = [
     {
         type: 'standard',
         name: 'Standard Wash',
-        description: 'Exterior Only',
+        description: 'Quick Exterior (غسيل خارجي سريع)',
         price: 600,
         washes: '4 washes/month',
         features: [
-            'Exterior hand wash',
-            'Tire cleaning',
-            'Window cleaning',
-            'Door-to-door service',
-            'Eco-friendly products',
+            'Pre-washing Foam (رغوة ما قبل الغسيل)',
+            'Specialized Shampoo wash (غسيل بشامبو مخصص)',
+            'Rinsing (شطف بالمياه)',
+            'Car Drying (تجفيف السيارة)',
+            'Tire Shine (تلميع الكاوتش)',
         ],
     },
     {
         type: 'premium',
         name: 'Premium Wash',
-        description: 'Interior + Exterior',
+        description: 'Inside & Out (غسيل داخلي وخارجي)',
         price: 720,
         washes: '4 washes/month',
         features: [
-            'Everything in Standard',
-            'Interior vacuuming',
-            'Dashboard cleaning',
-            'Seat cleaning',
-            'Air freshener',
+            'Pre-washing Foam (رغوة ما قبل الغسيل)',
+            'Specialized Shampoo wash (غسيل بشامبو مخصص)',
+            'Rinsing (شطف بالمياه)',
+            'Car Drying (تجفيف السيارة)',
+            'Interior Vacuum & Wipe Down (تنظيف داخلي و شفط)',
+            'Tire Shine (تلميع الكاوتش)',
+            'Car Trunk Cleaning (تنظيف شنطة السيارة)',
         ],
         isFeatured: true,
     },
@@ -64,8 +66,8 @@ export default function PlusPlanPage() {
                         <div
                             key={option.type}
                             className={`relative flex flex-col bg-white/5 backdrop-blur-sm p-8 md:p-10 rounded-[20px] border shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 ${option.isFeatured
-                                    ? 'border-[#C9A961]/40 bg-white/10 border-t-4 border-t-[#C9A961]'
-                                    : 'border-[#C9A961]/20'
+                                ? 'border-[#C9A961]/40 bg-white/10 border-t-4 border-t-[#C9A961]'
+                                : 'border-[#C9A961]/20'
                                 }`}
                         >
                             {option.isFeatured && (

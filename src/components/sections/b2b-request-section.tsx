@@ -1,9 +1,19 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Building2, User, Phone, Mail, MapPin, Briefcase } from 'lucide-react';
 import Image from 'next/image';
+
+const areas = [
+    '1st Settlement',
+    '5th Settlement',
+    'Qattamia',
+    'Shorouk',
+    'Madinaty',
+    'Nasr City',
+    'Heliopolis',
+];
 
 const B2BRequestSection = () => {
     const router = useRouter();
@@ -13,6 +23,7 @@ const B2BRequestSection = () => {
         phone: '',
         email: '',
         businessType: '',
+        area: '',
         location: '',
     });
 
@@ -186,6 +197,34 @@ const B2BRequestSection = () => {
                                 <option value="Company" className="bg-black">Company</option>
                                 <option value="Mall" className="bg-black">Mall</option>
                             </select>
+                        </div>
+
+                        {/* Area */}
+                        <div>
+                            <label htmlFor="area" className="flex items-center text-white/90 font-medium mb-2">
+                                <MapPin className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Area <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <div className="relative">
+                                <select
+                                    id="area"
+                                    name="area"
+                                    required
+                                    value={formData.area}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors appearance-none"
+                                >
+                                    <option value="" className="bg-black">Select your area</option>
+                                    {areas.map((area) => (
+                                        <option key={area} value={area} className="bg-black">
+                                            {area}
+                                        </option>
+                                    ))}
+                                </select>
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#C9A961]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Location */}
