@@ -153,10 +153,7 @@ const ContactPageSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="mt-8 bg-white/5 h-64 rounded-lg flex items-center justify-center text-white/40 border border-[#C9A961]/10">
-              <p>Location Illustration Here</p>
-            </div>
+
 
             {/* Social Links */}
             <div className="mt-8 text-center">

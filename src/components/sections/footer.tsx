@@ -17,7 +17,7 @@ const Footer = () => {
             </div>
 
             <div className="max-w-[1400px] mx-auto px-8 md:px-16 pt-20 pb-8 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-12 text-center md:text-left">
 
                     {/* Column 1: Logo, Social, Copyright */}
                     <div className="flex flex-col items-center md:items-start">
@@ -41,7 +41,7 @@ const Footer = () => {
                                 <Facebook size={24} />
                             </a>
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/autobella_carwash/?igsh=MWlzMTF0ZXJydXczcQ%3D%3D#"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-white/80 hover:text-[#C9A961] transition-all duration-200 hover:scale-110"
@@ -80,10 +80,13 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Contact Us</h3>
                         <div className="text-white/70 space-y-3 text-base">
                             <p>
-                                Phone: <a href="tel:+201556028198" className="hover:text-[#C9A961] transition-colors">01556028198</a>
+                                Phone: <a href="tel:+201556028198" className="hover:text-[#C9A961] transition-colors">015 560 28198</a>
                             </p>
                             <p>
                                 Location: Cairo, Egypt
+                            </p>
+                            <p>
+                                Email: autobella.cars@gmail.com
                             </p>
                         </div>
                     </div>
