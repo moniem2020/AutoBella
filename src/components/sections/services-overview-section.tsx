@@ -98,6 +98,14 @@ const ServicesOverviewSection = () => {
               <ArrowRight className="h-5 w-5" />
               <span>Memberships</span>
             </Link>
+
+            <Link
+              href="/ultimate-care"
+              className="flex w-full items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black md:w-auto"
+            >
+              <Droplets className="h-5 w-5" />
+              <span>Ultimate Car Care</span>
+            </Link>
           </div>
         </div>
       </div>
