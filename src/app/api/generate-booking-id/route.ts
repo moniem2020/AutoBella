@@ -1,7 +1,20 @@
-import { kv } from '@vercel/kv';
+import Redis from 'ioredis';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Initialize Redis client
+// Use REDIS_URL if available (standard), otherwise fall back to KV_URL (Vercel KV)
+const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+const redis = redisUrl ? new Redis(redisUrl) : null;
+
 export async function POST(request: NextRequest) {
+    if (!redis) {
+        console.error('Redis is not configured. Missing REDIS_URL or KV_URL.');
+        return NextResponse.json(
+            { success: false, error: 'Database configuration error' },
+            { status: 500 }
+        );
+    }
+
     try {
         const { type } = await request.json();
 
@@ -10,10 +23,12 @@ export async function POST(request: NextRequest) {
         switch (type) {
             case 'booking':
                 // Increment booking counter (starts at 109)
-                const bookingCounter = await kv.incr('booking_counter');
+                const bookingCounter = await redis.incr('booking_counter');
                 // If this is the first time, set it to 109
                 if (bookingCounter === 1) {
-                    await kv.set('booking_counter', 109);
+                    await redis.set('booking_counter', 109);
+                    // Reset counter to 109 so next incr is 110
+                    // Actually, if we set it to 109, the current one is 109.
                     bookingId = '109';
                 } else {
                     bookingId = bookingCounter.toString();
@@ -22,9 +37,9 @@ export async function POST(request: NextRequest) {
 
             case 'membership':
                 // Increment membership counter (starts at 17, prefix with M)
-                const membershipCounter = await kv.incr('membership_counter');
+                const membershipCounter = await redis.incr('membership_counter');
                 if (membershipCounter === 1) {
-                    await kv.set('membership_counter', 17);
+                    await redis.set('membership_counter', 17);
                     bookingId = 'M17';
                 } else {
                     bookingId = `M${membershipCounter}`;
@@ -33,9 +48,9 @@ export async function POST(request: NextRequest) {
 
             case 'b2b':
                 // Increment B2B counter (starts at 3, prefix with B)
-                const b2bCounter = await kv.incr('b2b_counter');
+                const b2bCounter = await redis.incr('b2b_counter');
                 if (b2bCounter === 1) {
-                    await kv.set('b2b_counter', 3);
+                    await redis.set('b2b_counter', 3);
                     bookingId = 'B3';
                 } else {
                     bookingId = `B${b2bCounter}`;
