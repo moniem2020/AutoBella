@@ -11,6 +11,8 @@ const areas = [
     'Qattamia',
     'Shorouk',
     'Madinaty',
+    'Nasr City',
+    'Heliopolis',
 ];
 
 const carTypes = [

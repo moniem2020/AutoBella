@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, Suspense } from 'react';
-import { User, Phone, Mail } from 'lucide-react';
+import { User, Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -36,6 +36,16 @@ const membershipPlans = [
     },
 ];
 
+const areas = [
+    '1st Settlement',
+    '5th Settlement',
+    'Qattamia',
+    'Shorouk',
+    'Madinaty',
+    'Nasr City',
+    'Heliopolis',
+];
+
 const MembershipRegistrationForm = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -48,6 +58,8 @@ const MembershipRegistrationForm = () => {
         name: '',
         phone: '',
         email: '',
+        area: '',
+        address: '',
         membership: urlPlan,
         washType: urlType,
     });
@@ -57,7 +69,9 @@ const MembershipRegistrationForm = () => {
     // Get selected plan details
     const selectedPlan = membershipPlans.find(p => p.id === formData.membership) || membershipPlans[1];
     const selectedPrice = selectedPlan.prices[formData.washType as 'standard' | 'premium'];
-    const washTypeLabel = formData.washType === 'standard' ? 'Standard Wash (Exterior Only)' : 'Premium Wash (Interior + Exterior)';
+    const washTypeLabel = formData.washType === 'standard'
+        ? 'Standard Wash - Quick Exterior (غسيل خارجي سريع)'
+        : 'Premium Wash - Inside & Out (غسيل داخلي وخارجي)';
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -113,7 +127,7 @@ const MembershipRegistrationForm = () => {
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -199,6 +213,52 @@ const MembershipRegistrationForm = () => {
                                 onChange={handleChange}
                                 className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                 placeholder="your.email@example.com"
+                            />
+                        </div>
+
+                        {/* Area */}
+                        <div>
+                            <label htmlFor="area" className="flex items-center text-white/90 font-medium mb-2">
+                                <MapPin className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Area <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <div className="relative">
+                                <select
+                                    id="area"
+                                    name="area"
+                                    required
+                                    value={formData.area}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors appearance-none"
+                                >
+                                    <option value="" className="bg-black">Select your area</option>
+                                    {areas.map((area) => (
+                                        <option key={area} value={area} className="bg-black">
+                                            {area}
+                                        </option>
+                                    ))}
+                                </select>
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#C9A961]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Address */}
+                        <div>
+                            <label htmlFor="address" className="flex items-center text-white/90 font-medium mb-2">
+                                <MapPin className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Address Details <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                required
+                                value={formData.address}
+                                onChange={handleChange}
+                                className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                placeholder="Street name, Building number, Apartment"
                             />
                         </div>
 

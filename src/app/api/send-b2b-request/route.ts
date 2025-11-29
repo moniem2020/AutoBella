@@ -32,12 +32,13 @@ export async function POST(request: NextRequest) {
                     <p><strong>Phone:</strong> ${data.phone}</p>
                     ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
                     <p><strong>Business Type:</strong> ${data.businessType}</p>
+                    <p><strong>Area:</strong> ${data.area}</p>
                     <p><strong>Location:</strong> ${data.location}</p>
                 `;
 
                 const info = await transporter.sendMail({
                     from: `"AutoBella B2B Requests" <${gmailUser}>`,
-                    to: 'moniemghazal@gmail.com',
+                    to: 'autobella.cars@gmail.com',
                     subject: `New B2B Request - ${data.businessType} - ${data.businessName}`,
                     html: emailHtml,
                 });

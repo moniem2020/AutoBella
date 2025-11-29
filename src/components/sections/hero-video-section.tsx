@@ -378,7 +378,7 @@ const HeroVideoSection = () => {
               Book A Wash
             </Link>
             <Link
-              href="/membership-registration"
+              href="/client-memberships"
               className="bg-transparent border-2 border-white/80 hover:bg-white hover:text-black text-white px-8 py-4 rounded-full font-semibold text-base md:text-lg tracking-wide shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105"
             >
               Book As A Member

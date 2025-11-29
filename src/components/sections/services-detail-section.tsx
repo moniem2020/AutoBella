@@ -137,6 +137,98 @@ const ServicesDetailSection = () => {
           ))}
         </div>
 
+        {/* Additional Services */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <h3 className="font-display text-[#C9A961] text-4xl md:text-5xl leading-none mb-4">
+              More Services
+            </h3>
+            <p className="font-body text-lg text-white/70">
+              Explore our membership plans and business solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Client Memberships */}
+            <div className="relative flex flex-col bg-white/5 backdrop-blur-sm p-8 md:p-10 rounded-[20px] border border-[#C9A961]/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-[#C9A961]/40">
+              <div className="text-center mb-6">
+                <h3 className="font-display text-4xl text-white mb-4">Client Memberships</h3>
+                <p className="text-white/80 text-lg leading-relaxed mb-4">
+                  Subscribe to our monthly membership plans and enjoy regular washes at discounted rates. Choose from Basic, Plus, or Elite plans.
+                </p>
+                <p className="text-[#C9A961] text-xl font-semibold mb-2" dir="rtl">
+                  اشتراكات العملاء
+                </p>
+                <p className="text-white/70 text-base" dir="rtl">
+                  اشترك في خطط العضوية الشهرية واستمتع بغسيل منتظم بأسعار مخفضة
+                </p>
+              </div>
+
+              <div className="space-y-3 mb-6 flex-grow text-left">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">3-6 washes per month</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Standard & Premium options</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Starting from EGP 450/month</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Flexible scheduling</span>
+                </div>
+              </div>
+
+              <Link href="/client-memberships" className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center">
+                View Plans
+              </Link>
+            </div>
+
+            {/* B2B Services */}
+            <div className="relative flex flex-col bg-white/5 backdrop-blur-sm p-8 md:p-10 rounded-[20px] border border-[#C9A961]/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-[#C9A961]/40">
+              <div className="text-center mb-6">
+                <h3 className="font-display text-4xl text-white mb-4">B2B Solutions</h3>
+                <p className="text-white/80 text-lg leading-relaxed mb-4">
+                  Custom car wash solutions for businesses, residential compounds, companies, and malls. Get a personalized quote based on your needs.
+                </p>
+                <p className="text-[#C9A961] text-xl font-semibold mb-2" dir="rtl">
+                  حلول الأعمال
+                </p>
+                <p className="text-white/70 text-base" dir="rtl">
+                  حلول غسيل سيارات مخصصة للشركات والمجمعات السكنية
+                </p>
+              </div>
+
+              <div className="space-y-3 mb-6 flex-grow text-left">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Residential Compounds</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Corporate Solutions</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Shopping Malls</span>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 font-body text-base">Custom pricing</span>
+                </div>
+              </div>
+
+              <Link href="/b2b-request" className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center">
+                Request Quote
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Testimonials Slider */}
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">

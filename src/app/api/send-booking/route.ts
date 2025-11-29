@@ -54,7 +54,7 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
 
                 const info = await transporter.sendMail({
                     from: `"AutoBella Bookings" <${gmailUser}>`,
-                    to: 'moniemghazal@gmail.com',
+                    to: 'autobella.cars@gmail.com',
                     subject: `New Booking - ${data.name}`,
                     html: emailHtml,
                 });
