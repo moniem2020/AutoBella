@@ -91,7 +91,7 @@ const HeaderNavigation = () => {
                 {navItems.map((item) =>
                   item.isDropdown && item.dropdownItems ? (
                     <NavigationMenuItem key={item.name}>
-                      <NavigationMenuTrigger className="bg-transparent text-[15px] font-medium text-white/90 hover:bg-transparent hover:text-[#C9A961] focus:bg-transparent focus:text-[#C9A961] data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-[#C9A961]">
+                      <NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold text-white/90 hover:!bg-[#C9A961] hover:text-black focus:!bg-[#C9A961] focus:text-black data-[active]:!bg-[#C9A961] data-[active]:text-black data-[state=open]:!bg-[#C9A961] data-[state=open]:text-black transition-all duration-200">
                         {item.name}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>

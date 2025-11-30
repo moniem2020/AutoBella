@@ -371,7 +371,7 @@ const HeroVideoSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 opacity-0 animate-bounce-in" style={{ animationDelay: '600ms' }}>
             <Link
-              href="/booking"
+              href="/services"
               className="bg-[#C9A961] hover:bg-[#b89850] text-black px-8 py-4 rounded-full font-semibold text-base md:text-lg tracking-wide shadow-[0_0_30px_rgba(201,169,97,0.4)] hover:shadow-[0_0_40px_rgba(201,169,97,0.6)] transition-all duration-300 hover:scale-105 flex items-center gap-2"
             >
               <Droplets className="w-5 h-5" />

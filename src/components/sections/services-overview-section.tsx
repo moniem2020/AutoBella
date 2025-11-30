@@ -82,29 +82,37 @@ const ServicesOverviewSection = () => {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-center gap-6 md:flex-row">
+          <div className="mt-12 flex flex-col items-center justify-center gap-6 md:flex-row flex-wrap">
             <Link
               href="/services"
-              className="flex w-full items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black md:w-auto"
+              className="flex items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black hover:scale-105 min-w-[240px]"
             >
-              <Droplets className="h-5 w-5" />
+              <Droplets className="h-6 w-6" />
               <span>Individual car wash</span>
             </Link>
 
             <Link
               href="/client-memberships"
-              className="flex w-full items-center justify-center gap-3 rounded-full bg-[#C9A961] px-10 py-4 text-lg font-semibold text-black transition-all duration-300 hover:bg-[#b89850] hover:scale-105 md:w-auto"
+              className="flex items-center justify-center gap-3 rounded-full bg-[#C9A961] px-10 py-4 text-lg font-semibold text-black transition-all duration-300 hover:bg-[#b89850] hover:scale-105 shadow-lg min-w-[240px]"
             >
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-6 w-6" />
               <span>Memberships</span>
             </Link>
 
             <Link
               href="/ultimate-care"
-              className="flex w-full items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black md:w-auto"
+              className="flex items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black hover:scale-105 min-w-[240px]"
             >
-              <Droplets className="h-5 w-5" />
+              <Droplets className="h-6 w-6" />
               <span>Ultimate Car Care</span>
+            </Link>
+
+            <Link
+              href="/b2b-memberships"
+              className="flex items-center justify-center gap-3 rounded-full border-2 border-[#C9A961] bg-transparent px-10 py-4 text-lg font-semibold text-[#C9A961] transition-all duration-300 hover:bg-[#C9A961] hover:text-black hover:scale-105 min-w-[240px]"
+            >
+              <ArrowRight className="h-6 w-6" />
+              <span>B2B Memberships</span>
             </Link>
           </div>
         </div>

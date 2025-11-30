@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Sparkles, Award, Clock } from 'lucide-react';
+import FollowUsButton from '@/components/ui/follow-us-button';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,6 +37,9 @@ const AboutSection = () => {
       ref={sectionRef}
       className="relative bg-black py-20 md:py-32 overflow-hidden"
     >
+      {/* Follow Us Button */}
+      <FollowUsButton />
+
       {/* Decorative car logo background */}
       <div className="absolute top-20 right-0 opacity-5 pointer-events-none">
         <Image
@@ -84,13 +88,29 @@ const AboutSection = () => {
               </div>
             </div>
 
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
-            >
-              Book A Wash
-              <Sparkles className="w-5 h-5" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center sm:justify-start">
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-3 bg-[#C9A961] hover:bg-[#b89850] text-black font-bold text-lg py-3.5 px-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
+              >
+                <Sparkles className="w-6 h-6" />
+                <span>Book A Wash</span>
+              </Link>
+
+              <Link
+                href="/ultimate-care"
+                className="inline-flex items-center justify-center gap-3 bg-transparent border-2 border-[#C9A961] hover:bg-[#C9A961] text-[#C9A961] hover:text-black font-bold text-lg py-3.5 px-7 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                <span>Ultimate Car Care</span>
+              </Link>
+
+              <Link
+                href="/b2b-memberships"
+                className="inline-flex items-center justify-center gap-3 bg-transparent border-2 border-[#C9A961] hover:bg-[#C9A961] text-[#C9A961] hover:text-black font-bold text-lg py-3.5 px-7 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                <span>B2B Memberships</span>
+              </Link>
+            </div>
           </div>
 
           {/* Image Column */}

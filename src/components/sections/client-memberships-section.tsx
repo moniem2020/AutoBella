@@ -132,7 +132,7 @@ const ClientMembershipsSection = () => {
               Special offers for each villa vary depending on the number of participating cars
             </p>
             <p className="text-white/80 text-lg font-body" dir="rtl">
-              عروض خاصه للفيلا الواحده تختلف حسب عدد عربيات المشتركه
+              عروض خاصه للفيلا الواحده تختلف حسب عدد السيارات المشتركه
             </p>
           </div>
 

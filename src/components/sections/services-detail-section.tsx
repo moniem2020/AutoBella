@@ -167,7 +167,7 @@ const ServicesDetailSection = () => {
               <div className="space-y-3 mb-6 flex-grow text-left">
                 <div className="flex items-start">
                   <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-white/90 font-body text-base">3-6 washes per month</span>
+                  <span className="text-white/90 font-body text-base">8-20 washes per month</span>
                 </div>
                 <div className="flex items-start">
                   <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
@@ -175,7 +175,7 @@ const ServicesDetailSection = () => {
                 </div>
                 <div className="flex items-start">
                   <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-white/90 font-body text-base">Starting from EGP 450/month</span>
+                  <span className="text-white/90 font-body text-base">Starting from EGP 650/month</span>
                 </div>
                 <div className="flex items-start">
                   <Check className="h-5 w-5 text-[#C9A961] mr-3 mt-1 flex-shrink-0" />
