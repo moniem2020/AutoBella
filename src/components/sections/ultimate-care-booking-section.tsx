@@ -163,7 +163,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="name" className="flex items-center text-white/90 font-medium mb-2">
                                 <User className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Name <span className="text-[#C9A961] ml-1">*</span>
+                                Name / الاسم <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="text"
@@ -181,7 +181,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="phone" className="flex items-center text-white/90 font-medium mb-2">
                                 <Phone className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Phone <span className="text-[#C9A961] ml-1">*</span>
+                                Phone / رقم الهاتف <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="tel"
@@ -199,7 +199,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="email" className="flex items-center text-white/90 font-medium mb-2">
                                 <Mail className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Email (optional)
+                                Email / البريد الإلكتروني <span className="text-white/40 text-sm ml-1">(Optional / اختياري)</span>
                             </label>
                             <input
                                 type="email"
@@ -216,7 +216,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="service" className="flex items-center text-white/90 font-medium mb-2">
                                 <FileText className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Select Service <span className="text-[#C9A961] ml-1">*</span>
+                                Select Service / اختر الخدمة <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="relative">
                                 <select
@@ -242,7 +242,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="carType" className="flex items-center text-white/90 font-medium mb-2">
                                 <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Car Type <span className="text-[#C9A961] ml-1">*</span>
+                                Car Type / نوع السيارة <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="relative">
                                 <select
@@ -303,7 +303,7 @@ const BookingForm = () => {
                         <div>
                             <label htmlFor="plateLetters" className="flex items-center text-white/90 font-medium mb-2">
                                 <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                License Plate / رقم اللوحة <span className="text-[#C9A961] ml-1">*</span>
+                                License Plate / اللوحة المعدنية <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="flex gap-2">
                                 <input

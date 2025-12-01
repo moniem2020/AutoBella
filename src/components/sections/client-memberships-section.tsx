@@ -7,30 +7,39 @@ const plans = [
   {
     id: 'basic',
     name: 'Basic Plan',
+    nameAr: 'الباقة الأساسية',
     washes: '8 washes/month (2 per week)',
+    washesAr: '٨ غسلات/شهر (٢ أسبوعياً)',
     descriptionAr: 'حافظ على نظافة عربيتك بسهولة.',
     descriptionEn: 'Keep your car clean easily.',
     note: 'Standard Wash Only',
+    noteAr: 'غسيل خارجي فقط',
     price: 650,
     isFeatured: false,
   },
   {
     id: 'plus',
     name: 'Plus Plan',
+    nameAr: 'باقة بلس',
     washes: '12 washes/month',
+    washesAr: '١٢ غسلة/شهر',
     descriptionAr: 'خلي عربيتك دايمًا نظيفة ولامعة كل أسبوع.',
     descriptionEn: 'Stay fresh and shiny every week.',
     note: '10 Standard + 2 Premium Washes',
+    noteAr: '١٠ غسلات عادية + ٢ غسلة مميزة',
     price: 850,
     isFeatured: true,
   },
   {
     id: 'elite',
     name: 'Elite Plan',
+    nameAr: 'باقة النخبة',
     washes: '20 Washes/month',
+    washesAr: '٢٠ غسلة/شهر',
     descriptionAr: 'العناية المثالية بعربيتك طول السنة.',
     descriptionEn: 'Premium care for your car, all year round.',
     note: '18 Standard + 2 Premium Washes',
+    noteAr: '١٨ غسلة عادية + ٢ غسلة مميزة',
     price: 1350,
     isFeatured: false,
   },
@@ -87,15 +96,19 @@ const ClientMembershipsSection = () => {
                 </div>
               )}
               <div className="text-center pt-4">
-                <h3 className="font-display text-4xl text-white mb-3">{plan.name}</h3>
-                <p className="text-[#C9A961] text-2xl font-semibold mb-6">{plan.washes}</p>
+                <h3 className="font-display text-4xl text-white mb-1">{plan.name}</h3>
+                <h3 className="font-display text-2xl text-[#C9A961] mb-3" dir="rtl">{plan.nameAr}</h3>
+
+                <p className="text-white text-xl font-semibold mb-1">{plan.washes}</p>
+                <p className="text-[#C9A961] text-lg font-semibold mb-6" dir="rtl">{plan.washesAr}</p>
 
                 <div className="my-6 space-y-2">
                   <p className="text-white/70 text-lg leading-relaxed" dir="rtl">{plan.descriptionAr}</p>
                   <p className="text-white/70 text-lg leading-relaxed italic">{plan.descriptionEn}</p>
                 </div>
 
-                <p className="text-white/50 text-sm mb-6 leading-relaxed">{plan.note}</p>
+                <p className="text-white/50 text-sm mb-1 leading-relaxed">{plan.note}</p>
+                <p className="text-[#C9A961]/70 text-sm mb-6 leading-relaxed" dir="rtl">{plan.noteAr}</p>
 
                 <div className="my-6">
                   <div className="flex items-center justify-center gap-2">
@@ -110,7 +123,7 @@ const ClientMembershipsSection = () => {
                 href={`/client-memberships/${plan.id}`}
                 className="block w-full bg-[#C9A961] hover:bg-[#b89850] text-black font-semibold py-3 rounded-full mt-auto uppercase tracking-wider text-base transition-transform hover:scale-105 duration-300 shadow-lg text-center"
               >
-                Select Plan
+                Select Plan / اختر الباقة
               </Link>
             </div>
           ))}

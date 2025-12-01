@@ -254,7 +254,7 @@ const BookingSection = () => {
                         <div>
                             <label htmlFor="plateLetters" className="flex items-center text-white/90 font-medium mb-2">
                                 <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                License Plate / رقم اللوحة <span className="text-[#C9A961] ml-1">*</span>
+                                License Plate / اللوحة المعدنية <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="flex gap-2">
                                 <input

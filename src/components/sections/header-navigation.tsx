@@ -39,6 +39,7 @@ const navItems: NavItem[] = [
     ]
   },
   { name: 'Ultimate Car Care', href: '/ultimate-care' },
+  { name: 'Car Emergency', href: '/car-emergency' },
   { name: 'About', href: '/about' },
   { name: 'Contact Us', href: '/contact' },
 ];

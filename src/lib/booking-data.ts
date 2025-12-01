@@ -5,6 +5,18 @@ export const PAYMENT_METHODS = [
     { value: 'cash', label: 'Cash / نقدي' }
 ];
 
+export const AREAS = [
+    { value: '1st Settlement', label: '1st Settlement / التجمع الأول' },
+    { value: '5th Settlement', label: '5th Settlement / التجمع الخامس' },
+    { value: '6th of October', label: '6th of October / 6 أكتوبر' },
+    { value: 'Sheikh Zayed', label: 'Sheikh Zayed / الشيخ زايد' },
+    { value: 'Qattamia', label: 'Qattamia / القطامية' },
+    { value: 'Shorouk', label: 'Shorouk / الشروق' },
+    { value: 'Madinaty', label: 'Madinaty / مدينتي' },
+    { value: 'Nasr City', label: 'Nasr City / مدينة نصر' },
+    { value: 'Heliopolis', label: 'Heliopolis / مصر الجديدة' },
+];
+
 export const CAR_COLORS = [
     { value: 'white', label: 'White / أبيض' },
     { value: 'black', label: 'Black / أسود' },

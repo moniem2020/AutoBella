@@ -16,9 +16,21 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        const { type } = await request.json();
+        const { type, plateLetters, plateNumbers } = await request.json();
 
         let bookingId: string;
+
+        if (type === 'emergency') {
+            const emergencyCounter = await redis.incr('emergency_counter');
+            // Initialize counter at 8 if it's the first time
+            if (emergencyCounter === 1) {
+                await redis.set('emergency_counter', 8);
+                bookingId = 'E8';
+            } else {
+                bookingId = `E${emergencyCounter}`;
+            }
+            return NextResponse.json({ bookingId });
+        }
 
         switch (type) {
             case 'booking':
@@ -36,13 +48,41 @@ export async function POST(request: NextRequest) {
                 break;
 
             case 'membership':
-                // Increment membership counter (starts at 17, prefix with M)
-                const membershipCounter = await redis.incr('membership_counter');
-                if (membershipCounter === 1) {
-                    await redis.set('membership_counter', 17);
-                    bookingId = 'M17';
+                // For memberships, check if license plate already exists
+                if (plateLetters && plateNumbers) {
+                    const fullPlate = `${plateLetters}${plateNumbers}`.trim();
+                    const plateKey = `membership_plate:${fullPlate}`;
+
+                    // Check if this plate already has a membership ID
+                    const existingId = await redis.get(plateKey);
+
+                    if (existingId) {
+                        // Return existing membership ID for this plate
+                        bookingId = existingId;
+                        console.log(`Returning existing membership ID ${existingId} for plate ${fullPlate}`);
+                    } else {
+                        // Create new membership ID
+                        const membershipCounter = await redis.incr('membership_counter');
+                        if (membershipCounter === 1) {
+                            await redis.set('membership_counter', 17);
+                            bookingId = 'M17';
+                        } else {
+                            bookingId = `M${membershipCounter}`;
+                        }
+
+                        // Store plate-to-ID mapping
+                        await redis.set(plateKey, bookingId);
+                        console.log(`Created new membership ID ${bookingId} for plate ${fullPlate}`);
+                    }
                 } else {
-                    bookingId = `M${membershipCounter}`;
+                    // No plate provided, generate new ID without tracking
+                    const membershipCounter = await redis.incr('membership_counter');
+                    if (membershipCounter === 1) {
+                        await redis.set('membership_counter', 17);
+                        bookingId = 'M17';
+                    } else {
+                        bookingId = `M${membershipCounter}`;
+                    }
                 }
                 break;
 

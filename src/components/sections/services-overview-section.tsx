@@ -114,6 +114,14 @@ const ServicesOverviewSection = () => {
               <ArrowRight className="h-6 w-6" />
               <span>B2B Memberships</span>
             </Link>
+
+            <Link
+              href="/car-emergency"
+              className="flex items-center justify-center gap-3 rounded-full bg-[#dc2626] border-2 border-[#dc2626] px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-[#b91c1c] hover:border-[#b91c1c] hover:scale-105 shadow-lg min-w-[240px]"
+            >
+              <ArrowRight className="h-6 w-6" />
+              <span>Car Emergency</span>
+            </Link>
           </div>
         </div>
       </div>

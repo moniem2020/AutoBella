@@ -111,7 +111,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="businessName" className="flex items-center text-white/90 font-medium mb-2">
                                 <Building2 className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Business/Entity Name <span className="text-[#C9A961] ml-1">*</span>
+                                Business/Entity Name / اسم الشركة أو الجهة <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="text"
@@ -129,7 +129,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="contactName" className="flex items-center text-white/90 font-medium mb-2">
                                 <User className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Contact Person Name <span className="text-[#C9A961] ml-1">*</span>
+                                Contact Person Name / اسم الشخص المسؤول <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="text"
@@ -147,7 +147,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="phone" className="flex items-center text-white/90 font-medium mb-2">
                                 <Phone className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Phone Number <span className="text-[#C9A961] ml-1">*</span>
+                                Phone Number / رقم الهاتف <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="tel"
@@ -165,7 +165,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="email" className="flex items-center text-white/90 font-medium mb-2">
                                 <Mail className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Email <span className="text-white/40 text-sm ml-1">(Optional)</span>
+                                Email / البريد الإلكتروني <span className="text-white/40 text-sm ml-1">(Optional / اختياري)</span>
                             </label>
                             <input
                                 type="email"
@@ -182,7 +182,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="businessType" className="flex items-center text-white/90 font-medium mb-2">
                                 <Briefcase className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Business Type <span className="text-[#C9A961] ml-1">*</span>
+                                Business Type / نوع النشاط <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <select
                                 id="businessType"
@@ -192,10 +192,10 @@ const B2BRequestSection = () => {
                                 onChange={handleChange}
                                 className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                             >
-                                <option value="" className="bg-black">Select business type</option>
-                                <option value="Residential Compound" className="bg-black">Residential Compound</option>
-                                <option value="Company" className="bg-black">Company</option>
-                                <option value="Mall" className="bg-black">Mall</option>
+                                <option value="" className="bg-black">Select business type / اختر نوع النشاط</option>
+                                <option value="Residential Compound" className="bg-black">Residential Compound / مجمع سكني</option>
+                                <option value="Company" className="bg-black">Company / شركة</option>
+                                <option value="Mall" className="bg-black">Mall / مول تجاري</option>
                             </select>
                         </div>
 
@@ -203,7 +203,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="area" className="flex items-center text-white/90 font-medium mb-2">
                                 <MapPin className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Area <span className="text-[#C9A961] ml-1">*</span>
+                                Area / المنطقة <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="relative">
                                 <select
@@ -214,7 +214,7 @@ const B2BRequestSection = () => {
                                     onChange={handleChange}
                                     className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors appearance-none"
                                 >
-                                    <option value="" className="bg-black">Select your area</option>
+                                    <option value="" className="bg-black">Select your area / اختر المنطقة</option>
                                     {areas.map((area) => (
                                         <option key={area} value={area} className="bg-black">
                                             {area}
@@ -231,7 +231,7 @@ const B2BRequestSection = () => {
                         <div>
                             <label htmlFor="location" className="flex items-center text-white/90 font-medium mb-2">
                                 <MapPin className="w-5 h-5 mr-2 text-[#C9A961]" />
-                                Location/Address <span className="text-[#C9A961] ml-1">*</span>
+                                Location/Address / العنوان بالتفصيل <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="text"

@@ -98,7 +98,7 @@ const ServiceEvaluationSection = () => {
                         {/* Name */}
                         <div>
                             <label htmlFor="name" className="flex items-center text-white/90 font-medium mb-2">
-                                Name <span className="text-[#C9A961] ml-1">*</span>
+                                Name / الاسم <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="text"
@@ -115,7 +115,7 @@ const ServiceEvaluationSection = () => {
                         {/* Phone */}
                         <div>
                             <label htmlFor="phone" className="flex items-center text-white/90 font-medium mb-2">
-                                Phone <span className="text-[#C9A961] ml-1">*</span>
+                                Phone / رقم الهاتف <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <input
                                 type="tel"
@@ -132,7 +132,7 @@ const ServiceEvaluationSection = () => {
                         {/* How did you hear about us */}
                         <div>
                             <label htmlFor="howHeard" className="flex items-center text-white/90 font-medium mb-2">
-                                How did you hear about AutoBella? <span className="text-[#C9A961] ml-1">*</span>
+                                How did you hear about AutoBella? / كيف سمعت عنا؟ <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="relative">
                                 <select
@@ -143,7 +143,7 @@ const ServiceEvaluationSection = () => {
                                     onChange={handleChange}
                                     className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white appearance-none focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                 >
-                                    <option value="" className="bg-black">Select an option</option>
+                                    <option value="" className="bg-black">Select an option / اختر إجابة</option>
                                     {howDidYouHear.map((option) => (
                                         <option key={option} value={option} className="bg-black">{option}</option>
                                     ))}
@@ -155,7 +155,7 @@ const ServiceEvaluationSection = () => {
                         {/* Service Quality */}
                         <div>
                             <label htmlFor="quality" className="flex items-center text-white/90 font-medium mb-2">
-                                Service Quality <span className="text-[#C9A961] ml-1">*</span>
+                                Service Quality / جودة الخدمة <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="relative">
                                 <select
@@ -166,7 +166,7 @@ const ServiceEvaluationSection = () => {
                                     onChange={handleChange}
                                     className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white appearance-none focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                 >
-                                    <option value="" className="bg-black">Select quality</option>
+                                    <option value="" className="bg-black">Select quality / اختر التقييم</option>
                                     {serviceQuality.map((option) => (
                                         <option key={option} value={option} className="bg-black">{option}</option>
                                     ))}
@@ -178,7 +178,7 @@ const ServiceEvaluationSection = () => {
                         {/* Rating */}
                         <div>
                             <label htmlFor="rating" className="flex items-center text-white/90 font-medium mb-2">
-                                Rating (1-10) <span className="text-[#C9A961] ml-1">*</span>
+                                Rating (1-10) / التقييم (١-١٠) <span className="text-[#C9A961] ml-1">*</span>
                             </label>
                             <div className="flex items-center gap-4">
                                 <input
@@ -200,7 +200,7 @@ const ServiceEvaluationSection = () => {
                         {/* Review */}
                         <div>
                             <label htmlFor="review" className="flex items-center text-white/90 font-medium mb-2">
-                                Review (Optional)
+                                Review (Optional) / رأيك (اختياري)
                             </label>
                             <textarea
                                 id="review"
@@ -222,7 +222,7 @@ const ServiceEvaluationSection = () => {
                             {loading ? 'Submitting...' : (
                                 <>
                                     <Send className="w-5 h-5" />
-                                    Submit Evaluation
+                                    Submit Evaluation / إرسال التقييم
                                 </>
                             )}
                         </button>
