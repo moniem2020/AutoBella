@@ -70,7 +70,7 @@ const AboutSection = () => {
             </h2>
 
             <p className="font-body text-white/80 text-lg md:text-xl leading-relaxed">
-              With AutoBella, car care becomes effortless. Our teams reach you wherever you are and whenever you need us delivering quick, smooth service, trusted quality, and an experience that stays with you.
+              With AutoBella, car care becomes effortless. Our teams reach you wherever you are and whenever you need us. Delivering quick, smooth service, trusted quality, and an experience that stays with you.
             </p>
 
             {/* Feature Cards */}

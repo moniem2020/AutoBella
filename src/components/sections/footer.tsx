@@ -17,9 +17,47 @@ const Footer = () => {
             </div>
 
             <div className="max-w-[1400px] mx-auto px-8 md:px-16 pt-20 pb-8 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-12 text-center md:text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.5fr_1.5fr] gap-12 text-center md:text-left">
 
-                    {/* Column 1: Logo, Social, Copyright */}
+                    {/* Column 1: Quick Links */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Quick Links</h3>
+                        <ul className="space-y-3">
+                            <li><Link href="/" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Home</Link></li>
+                            <li><Link href="/services" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Services</Link></li>
+                            <li><Link href="/about" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">About Us</Link></li>
+                            <li><Link href="/client-memberships" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Memberships</Link></li>
+                            <li><Link href="/b2b-memberships" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">B2B Memberships</Link></li>
+                            <li><Link href="/ultimate-care" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Ultimate Car Care</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 2: Support */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Support</h3>
+                        <ul className="space-y-3">
+                            <li><Link href="/#faqs" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">FAQs</Link></li>
+                            <li><Link href="/#book" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Book a Wash</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 3: Contact Us */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Contact Us</h3>
+                        <div className="text-white/70 space-y-3 text-base">
+                            <p>
+                                Phone: 015 560 28198
+                            </p>
+                            <p>
+                                Location: Cairo, Egypt
+                            </p>
+                            <p>
+                                Email: autobella.cars@gmail.com
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Column 4: Logo, Social, Feedback, Copyright */}
                     <div className="flex flex-col items-center md:items-start">
                         <Link href="/" className="mb-6 transition-opacity hover:opacity-80">
                             <Image
@@ -104,44 +142,6 @@ const Footer = () => {
                         <p className="mt-8 text-sm text-white/50">
                             © 2025 AutoBella. All rights reserved.
                         </p>
-                    </div>
-
-                    {/* Column 2: Quick Links */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Quick Links</h3>
-                        <ul className="space-y-3">
-                            <li><Link href="/" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Home</Link></li>
-                            <li><Link href="/services" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Services</Link></li>
-                            <li><Link href="/about" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">About Us</Link></li>
-                            <li><Link href="/client-memberships" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Memberships</Link></li>
-                            <li><Link href="/b2b-memberships" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">B2B Memberships</Link></li>
-                            <li><Link href="/ultimate-care" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Ultimate Car Care</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Column 3: Support */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Support</h3>
-                        <ul className="space-y-3">
-                            <li><Link href="/#faqs" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">FAQs</Link></li>
-                            <li><Link href="/#book" className="text-white/70 hover:text-[#C9A961] transition-colors text-base">Book a Wash</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Column 4: Contact Us */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-[#C9A961] mb-6">Contact Us</h3>
-                        <div className="text-white/70 space-y-3 text-base">
-                            <p>
-                                Phone: 015 560 28198
-                            </p>
-                            <p>
-                                Location: Cairo, Egypt
-                            </p>
-                            <p>
-                                Email: autobella.cars@gmail.com
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

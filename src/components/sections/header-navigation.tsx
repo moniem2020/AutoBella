@@ -38,6 +38,7 @@ const navItems: NavItem[] = [
       { title: 'B2B Memberships', href: '/b2b-memberships', description: 'Tailored solutions for your corporate fleet.' },
     ]
   },
+  { name: 'Ultimate Car Care', href: '/ultimate-care' },
   { name: 'About', href: '/about' },
   { name: 'Contact Us', href: '/contact' },
 ];

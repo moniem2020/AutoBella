@@ -16,7 +16,7 @@ const howDidYouHear = [
 ];
 
 const serviceQuality = [
-    'Bad Service',
+    'Bad',
     'Good',
     'Excellent',
 ];

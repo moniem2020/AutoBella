@@ -2,8 +2,10 @@
 
 import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { User, Phone, Mail, MapPin, Car, FileText, ChevronDown, Calendar, Clock } from 'lucide-react';
+import { User, Phone, Mail, MapPin, Car, FileText, ChevronDown, Calendar, Clock, MessageSquare } from 'lucide-react';
 import Image from 'next/image';
+import { PAYMENT_METHODS, CAR_COLORS } from '@/lib/booking-data';
+import SearchableCarBrand from '@/components/ui/searchable-car-brand';
 
 const services = [
     {
@@ -57,6 +59,11 @@ const BookingForm = () => {
         phone: '',
         email: '',
         carType: '',
+        carBrand: '',
+        carColor: '',
+        plateLetters: '',
+        plateNumbers: '',
+        paymentMethod: '',
         service: preselectedService || '',
         date: '',
         timeSlot: '',
@@ -249,6 +256,101 @@ const BookingForm = () => {
                                     <option value="" className="bg-black">Select Car Type</option>
                                     {carTypes.map((type) => (
                                         <option key={type} value={type} className="bg-black">{type}</option>
+                                    ))}
+                                </select>
+                                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
+                            </div>
+                        </div>
+
+                        {/* Car Brand */}
+                        <div>
+                            <label htmlFor="carBrand" className="flex items-center text-white/90 font-medium mb-2">
+                                <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Car Brand / ماركة السيارة <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <SearchableCarBrand
+                                value={formData.carBrand}
+                                onChange={(value) => setFormData({ ...formData, carBrand: value })}
+                                required
+                            />
+                        </div>
+
+                        {/* Car Color */}
+                        <div>
+                            <label htmlFor="carColor" className="flex items-center text-white/90 font-medium mb-2">
+                                <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Car Color / لون السيارة <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <div className="relative">
+                                <select
+                                    id="carColor"
+                                    name="carColor"
+                                    required
+                                    value={formData.carColor}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white appearance-none focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                >
+                                    <option value="" className="bg-black">Select Color / اختر اللون</option>
+                                    {CAR_COLORS.map((color) => (
+                                        <option key={color.value} value={color.value} className="bg-black">{color.label}</option>
+                                    ))}
+                                </select>
+                                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
+                            </div>
+                        </div>
+
+                        {/* License Plate Number */}
+                        <div>
+                            <label htmlFor="plateLetters" className="flex items-center text-white/90 font-medium mb-2">
+                                <Car className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                License Plate / رقم اللوحة <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    id="plateLetters"
+                                    name="plateLetters"
+                                    required
+                                    value={formData.plateLetters}
+                                    onChange={handleChange}
+                                    maxLength={5}
+                                    dir="rtl"
+                                    className="w-1/2 bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                    placeholder="أ ب ج"
+                                />
+                                <input
+                                    type="text"
+                                    id="plateNumbers"
+                                    name="plateNumbers"
+                                    required
+                                    value={formData.plateNumbers}
+                                    onChange={handleChange}
+                                    maxLength={5}
+                                    pattern="[0-9]*"
+                                    className="w-1/2 bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                    placeholder="1234"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Payment Method */}
+                        <div>
+                            <label htmlFor="paymentMethod" className="flex items-center text-white/90 font-medium mb-2">
+                                <MessageSquare className="w-5 h-5 mr-2 text-[#C9A961]" />
+                                Payment Method / طريقة الدفع <span className="text-[#C9A961] ml-1">*</span>
+                            </label>
+                            <div className="relative">
+                                <select
+                                    id="paymentMethod"
+                                    name="paymentMethod"
+                                    required
+                                    value={formData.paymentMethod}
+                                    onChange={handleChange}
+                                    className="w-full bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white appearance-none focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
+                                >
+                                    <option value="" className="bg-black">Select Payment / اختر طريقة الدفع</option>
+                                    {PAYMENT_METHODS.map((method) => (
+                                        <option key={method.value} value={method.value} className="bg-black">{method.label}</option>
                                     ))}
                                 </select>
                                 <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
