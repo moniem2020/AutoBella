@@ -67,12 +67,18 @@ const CarEmergencyBookingSection = () => {
             const data = await response.json();
 
             if (response.ok) {
+                // Store emergency data in sessionStorage for success page
+                sessionStorage.setItem('bookingData', JSON.stringify({ ...formData, bookingId }));
+
                 // Redirect to WhatsApp
                 if (data.whatsappUrl) {
                     window.open(data.whatsappUrl, '_blank');
                 }
+
+                // Redirect to success page
                 router.push('/success?type=emergency');
             } else {
+                console.error('Response error:', data);
                 alert('Failed to submit request. Please try again.');
             }
         } catch (error) {

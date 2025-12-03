@@ -14,21 +14,26 @@ export async function POST(request: Request) {
             paymentMethod
         } = data;
 
-        // Create Transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
+        // Create Transporter and send email (optional - won't fail if env vars missing)
+        const gmailUser = process.env.GMAIL_USER;
+        const gmailPass = process.env.GMAIL_APP_PASSWORD;
 
-        // Email Content
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: 'moniemghazal@gmail.com',
-            subject: `🚨 Emergency Request #${bookingId} - ${emergencyType}`,
-            html: `
+        if (gmailUser && gmailPass) {
+            try {
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: gmailUser,
+                        pass: gmailPass,
+                    },
+                });
+
+                // Email Content
+                const mailOptions = {
+                    from: gmailUser,
+                    to: 'autobella.cars@gmail.com',
+                    subject: `🚨 Emergency Request #${bookingId} - ${emergencyType}`,
+                    html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                     <h2 style="color: #dc2626; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">🚨 New Emergency Request</h2>
                     
@@ -68,10 +73,18 @@ export async function POST(request: Request) {
                     </p>
                 </div>
             `,
-        };
+                };
 
-        // Send Email
-        await transporter.sendMail(mailOptions);
+                // Send Email
+                await transporter.sendMail(mailOptions);
+                console.log('Emergency email sent successfully');
+            } catch (emailError) {
+                console.error('Error sending emergency email:', emailError);
+                // Don't fail the request if email fails
+            }
+        } else {
+            console.warn('WARNING: GMAIL_USER or GMAIL_APP_PASSWORD environment variable is missing. Email notification will NOT be sent.');
+        }
 
         // Prepare WhatsApp Message
         const whatsappMessage = `🚨 *New Emergency Request* 🚨%0a%0a` +

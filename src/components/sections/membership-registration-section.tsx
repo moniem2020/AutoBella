@@ -412,7 +412,7 @@ const MembershipRegistrationForm = () => {
                                     required
                                     value={formData.plateLetters}
                                     onChange={handleChange}
-                                    maxLength={5}
+                                    maxLength={7}
                                     dir="rtl"
                                     className="w-1/2 bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                     placeholder="أ ب ج"
@@ -424,7 +424,7 @@ const MembershipRegistrationForm = () => {
                                     required
                                     value={formData.plateNumbers}
                                     onChange={handleChange}
-                                    maxLength={5}
+                                    maxLength={7}
                                     pattern="[0-9]*"
                                     className="w-1/2 bg-white/5 border border-[#C9A961]/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-[#C9A961] focus:ring-1 focus:ring-[#C9A961] focus:outline-none transition-colors"
                                     placeholder="1234"
