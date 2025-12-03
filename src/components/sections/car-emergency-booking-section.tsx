@@ -70,11 +70,6 @@ const CarEmergencyBookingSection = () => {
                 // Store emergency data in sessionStorage for success page
                 sessionStorage.setItem('bookingData', JSON.stringify({ ...formData, bookingId }));
 
-                // Redirect to WhatsApp
-                if (data.whatsappUrl) {
-                    window.open(data.whatsappUrl, '_blank');
-                }
-
                 // Redirect to success page
                 router.push('/success?type=emergency');
             } else {
