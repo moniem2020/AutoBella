@@ -9,11 +9,8 @@ export async function POST(request: Request) {
             name,
             phone,
             emergencyType,
-            carBrand,
-            carColor,
-            plateLetters,
-            plateNumbers,
-            location,
+            area,
+            carType,
             paymentMethod
         } = data;
 
@@ -52,20 +49,12 @@ export async function POST(request: Request) {
                                 <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #dc2626; font-weight: bold;">${emergencyType}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Brand:</strong></td>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${carBrand}</td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Area:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${area}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Color:</strong></td>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${carColor}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>License Plate:</strong></td>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${plateLetters} ${plateNumbers}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Location:</strong></td>
-                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${location}</td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Type:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${carType}</td>
                             </tr>
                             <tr>
                                 <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Payment Method:</strong></td>
@@ -90,11 +79,10 @@ export async function POST(request: Request) {
             `👤 *Name:* ${name}%0a` +
             `📱 *Phone:* ${phone}%0a` +
             `⚠️ *Type:* ${emergencyType}%0a` +
-            `🚗 *Car:* ${carBrand} (${carColor})%0a` +
-            `🔢 *Plate:* ${plateLetters} ${plateNumbers}%0a` +
-            `📍 *Location:* ${location}%0a` +
+            `📍 *Area:* ${area}%0a` +
+            `🚗 *Car Type:* ${carType}%0a` +
             `💳 *Payment:* ${paymentMethod}%0a` +
-            `%0aPlease contact the client immediately!`;
+            `%0aPlease contact the client immediately for location details!`;
 
         return NextResponse.json({
             success: true,

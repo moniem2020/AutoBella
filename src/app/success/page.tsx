@@ -112,32 +112,140 @@ const SuccessContent = () => {
                                     <span className="text-white font-semibold">{data.email}</span>
                                 </div>
                             )}
-                            {!isMembership && (
+
+                            {/* Membership specific fields */}
+                            {isMembership && (
                                 <>
                                     <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Car Type:</span>
-                                        <span className="text-white font-semibold">{data.carType}</span>
+                                        <span className="text-white/60 font-medium">Membership Plan:</span>
+                                        <span className="text-white font-semibold">{data.membership}</span>
                                     </div>
-                                    <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Area:</span>
-                                        <span className="text-white font-semibold">{data.area}</span>
-                                    </div>
-                                    <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Address:</span>
-                                        <span className="text-white font-semibold text-right max-w-xs">{data.address}</span>
-                                    </div>
-                                    <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Service:</span>
-                                        <span className="text-white font-semibold">{data.service}</span>
-                                    </div>
-                                    <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Date:</span>
-                                        <span className="text-white font-semibold">{data.date}</span>
-                                    </div>
-                                    <div className="flex justify-between py-3 border-b border-white/10">
-                                        <span className="text-white/60 font-medium">Time:</span>
-                                        <span className="text-white font-semibold">{data.timeSlot}</span>
-                                    </div>
+                                    {data.area && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Area:</span>
+                                            <span className="text-white font-semibold">{data.area}</span>
+                                        </div>
+                                    )}
+                                    {data.address && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Address:</span>
+                                            <span className="text-white font-semibold text-right max-w-xs">{data.address}</span>
+                                        </div>
+                                    )}
+                                    {data.carType && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Type:</span>
+                                            <span className="text-white font-semibold">{data.carType}</span>
+                                        </div>
+                                    )}
+                                    {data.carBrand && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Brand:</span>
+                                            <span className="text-white font-semibold">{data.carBrand}</span>
+                                        </div>
+                                    )}
+                                    {data.carColor && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Color:</span>
+                                            <span className="text-white font-semibold">{data.carColor}</span>
+                                        </div>
+                                    )}
+                                    {data.plateLetters && data.plateNumbers && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">License Plate:</span>
+                                            <span className="text-white font-semibold">{data.plateLetters} {data.plateNumbers}</span>
+                                        </div>
+                                    )}
+                                    {data.paymentMethod && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Payment Method:</span>
+                                            <span className="text-white font-semibold">{data.paymentMethod}</span>
+                                        </div>
+                                    )}
+                                    {data.date && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Preferred Date:</span>
+                                            <span className="text-white font-semibold">{data.date}</span>
+                                        </div>
+                                    )}
+                                    {data.timeSlot && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Preferred Time:</span>
+                                            <span className="text-white font-semibold">{data.timeSlot}</span>
+                                        </div>
+                                    )}
+                                </>
+                            )}
+
+                            {/* Standard booking and Ultimate Care fields */}
+                            {!isMembership && (
+                                <>
+                                    {data.emergencyType && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Emergency Type:</span>
+                                            <span className="text-white font-semibold text-red-400">{data.emergencyType}</span>
+                                        </div>
+                                    )}
+                                    {data.carType && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Type:</span>
+                                            <span className="text-white font-semibold">{data.carType}</span>
+                                        </div>
+                                    )}
+                                    {data.carBrand && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Brand:</span>
+                                            <span className="text-white font-semibold">{data.carBrand}</span>
+                                        </div>
+                                    )}
+                                    {data.carColor && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Car Color:</span>
+                                            <span className="text-white font-semibold">{data.carColor}</span>
+                                        </div>
+                                    )}
+                                    {data.plateLetters && data.plateNumbers && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">License Plate:</span>
+                                            <span className="text-white font-semibold">{data.plateLetters} {data.plateNumbers}</span>
+                                        </div>
+                                    )}
+                                    {data.paymentMethod && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Payment Method:</span>
+                                            <span className="text-white font-semibold">{data.paymentMethod}</span>
+                                        </div>
+                                    )}
+                                    {data.area && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Area:</span>
+                                            <span className="text-white font-semibold">{data.area}</span>
+                                        </div>
+                                    )}
+                                    {data.address && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Address:</span>
+                                            <span className="text-white font-semibold text-right max-w-xs">{data.address}</span>
+                                        </div>
+                                    )}
+                                    {data.service && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Service:</span>
+                                            <span className="text-white font-semibold">{data.service}</span>
+                                        </div>
+                                    )}
+                                    {data.date && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Date:</span>
+                                            <span className="text-white font-semibold">{data.date}</span>
+                                        </div>
+                                    )}
+                                    {data.timeSlot && (
+                                        <div className="flex justify-between py-3 border-b border-white/10">
+                                            <span className="text-white/60 font-medium">Time:</span>
+                                            <span className="text-white font-semibold">{data.timeSlot}</span>
+                                        </div>
+                                    )}
                                     {data.notes && (
                                         <div className="flex justify-between py-3 border-b border-white/10">
                                             <span className="text-white/60 font-medium">Notes:</span>
@@ -145,12 +253,6 @@ const SuccessContent = () => {
                                         </div>
                                     )}
                                 </>
-                            )}
-                            {isMembership && (
-                                <div className="flex justify-between py-3 border-b border-white/10">
-                                    <span className="text-white/60 font-medium">Membership:</span>
-                                    <span className="text-white font-semibold">{data.membership}</span>
-                                </div>
                             )}
                         </>
                     )}

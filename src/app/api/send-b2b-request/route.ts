@@ -24,16 +24,49 @@ export async function POST(request: NextRequest) {
                 });
 
                 const emailHtml = `
-                    <h2>New B2B Quote Request</h2>
-                    <p><strong>Booking ID:</strong> #${data.bookingId}</p>
-                    <hr style="margin: 20px 0; border: 1px solid #C9A961;" />
-                    <p><strong>Business/Entity Name:</strong> ${data.businessName}</p>
-                    <p><strong>Contact Person:</strong> ${data.contactName}</p>
-                    <p><strong>Phone:</strong> ${data.phone}</p>
-                    ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
-                    <p><strong>Business Type:</strong> ${data.businessType}</p>
-                    <p><strong>Area:</strong> ${data.area}</p>
-                    <p><strong>Location:</strong> ${data.location}</p>
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #C9A961; border-bottom: 2px solid #C9A961; padding-bottom: 10px;">🏢 New B2B Quote Request</h2>
+                        
+                        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                            <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">Booking ID: #${data.bookingId}</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Business Name:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.businessName}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Contact Person:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.contactName}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Phone:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="tel:${data.phone}">${data.phone}</a></td>
+                                </tr>
+                                ${data.email ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.email}</td>
+                                </tr>` : ''}
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Business Type:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #C9A961; font-weight: bold;">${data.businessType}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Area:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.area}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Location:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.location}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
+                            This is an automated message from AutoBella Website
+                        </p>
+                    </div>
                 `;
 
                 const info = await transporter.sendMail({

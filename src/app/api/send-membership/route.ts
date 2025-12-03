@@ -42,14 +42,86 @@ ${data.email ? `📧 *Email:* ${data.email}\n` : ''}📍 *Area:* ${data.area}
                 });
 
                 const emailHtml = `
-                    <h2>New Membership Registration</h2>
-                    <p><strong>Booking ID:</strong> #${data.bookingId}</p>
-                    <hr style="margin: 20px 0; border: 1px solid #C9A961;" />
-                    <p><strong>Name:</strong> ${data.name}</p>
-                    <p><strong>Phone:</strong> ${data.phone}</p>
-                    ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
-                    <p><strong>Selected Plan:</strong> ${selectedPlan.name}</p>
-                    <p><strong>Details:</strong> ${selectedPlan.washes} - ${selectedPlan.price}</p>
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #C9A961; border-bottom: 2px solid #C9A961; padding-bottom: 10px;">💎 New Membership Registration</h2>
+                        
+                        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                            <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">Booking ID: #${data.bookingId}</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Name:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Phone:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="tel:${data.phone}">${data.phone}</a></td>
+                                </tr>
+                                ${data.email ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.email}</td>
+                                </tr>` : ''}
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Selected Plan:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #C9A961; font-weight: bold;">${selectedPlan.name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Plan Details:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${selectedPlan.washes} - ${selectedPlan.price}</td>
+                                </tr>
+                                ${data.area ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Area:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.area}</td>
+                                </tr>` : ''}
+                                ${data.address ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Address:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.address}</td>
+                                </tr>` : ''}
+                                ${data.carType ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Type:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carType}</td>
+                                </tr>` : ''}
+                                ${data.carBrand ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Brand:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carBrand}</td>
+                                </tr>` : ''}
+                                ${data.carColor ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Color:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carColor}</td>
+                                </tr>` : ''}
+                                ${data.plateLetters && data.plateNumbers ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>License Plate:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.plateLetters} ${data.plateNumbers}</td>
+                                </tr>` : ''}
+                                ${data.paymentMethod ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Payment Method:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.paymentMethod}</td>
+                                </tr>` : ''}
+                                ${data.date ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Preferred Date:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.date}</td>
+                                </tr>` : ''}
+                                ${data.timeSlot ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Preferred Time:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.timeSlot}</td>
+                                </tr>` : ''}
+                            </table>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
+                            This is an automated message from AutoBella Website
+                        </p>
+                    </div>
                 `;
 
                 const info = await transporter.sendMail({

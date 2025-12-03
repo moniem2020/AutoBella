@@ -41,23 +41,78 @@ ${data.notes ? `📝 *Notes:* ${data.notes}` : ''}`;
                 });
 
                 const emailHtml = `
-                    <h2>New Booking Request</h2>
-                    <p><strong>Booking ID:</strong> #${data.bookingId}</p>
-                    <hr style="margin: 20px 0; border: 1px solid #C9A961;" />
-                    <p><strong>Name:</strong> ${data.name}</p>
-                    <p><strong>Phone:</strong> ${data.phone}</p>
-                    ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
-                    <p><strong>Car Type:</strong> ${data.carType}</p>
-                    <p><strong>Car Brand:</strong> ${data.carBrand}</p>
-                    <p><strong>Car Color:</strong> ${data.carColor}</p>
-                    <p><strong>License Plate:</strong> ${data.plateLetters} ${data.plateNumbers}</p>
-                    <p><strong>Payment Method:</strong> ${data.paymentMethod}</p>
-                    <p><strong>Area:</strong> ${data.area}</p>
-                    <p><strong>Address:</strong> ${data.address}</p>
-                    <p><strong>Service:</strong> ${data.service}</p>
-                    <p><strong>Date:</strong> ${data.date}</p>
-                    <p><strong>Time:</strong> ${data.timeSlot}</p>
-                    ${data.notes ? `<p><strong>Notes:</strong> ${data.notes}</p>` : ''}
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #C9A961; border-bottom: 2px solid #C9A961; padding-bottom: 10px;">🚗 New Booking Request</h2>
+                        
+                        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                            <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">Booking ID: #${data.bookingId}</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Name:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Phone:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="tel:${data.phone}">${data.phone}</a></td>
+                                </tr>
+                                ${data.email ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.email}</td>
+                                </tr>` : ''}
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Type:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carType}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Brand:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carBrand}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Color:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.carColor}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>License Plate:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.plateLetters} ${data.plateNumbers}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Payment Method:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.paymentMethod}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Area:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.area}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Address:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.address}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Service:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #C9A961; font-weight: bold;">${data.service}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Date:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.date}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Time:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.timeSlot}</td>
+                                </tr>
+                                ${data.notes ? `
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Notes:</strong></td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">${data.notes}</td>
+                                </tr>` : ''}
+                            </table>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
+                            This is an automated message from AutoBella Website
+                        </p>
+                    </div>
                 `;
 
                 const info = await transporter.sendMail({
