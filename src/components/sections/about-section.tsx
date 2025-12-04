@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Sparkles, Award, Clock } from 'lucide-react';
-import FollowUsButton from '@/components/ui/follow-us-button';
+import SocialBubbles from '@/components/ui/social-bubbles';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +38,7 @@ const AboutSection = () => {
       className="relative bg-black py-20 md:py-32 overflow-hidden"
     >
       {/* Follow Us Button */}
-      <FollowUsButton />
+      <SocialBubbles className="absolute top-6 right-6 z-40" />
 
       {/* Decorative car logo background */}
       <div className="absolute top-20 right-0 opacity-5 pointer-events-none">
