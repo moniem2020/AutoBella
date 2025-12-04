@@ -23,8 +23,8 @@ export default function PlusPlanPage() {
                     <h1 className="font-display text-[#C9A961] text-5xl md:text-[4.5rem] leading-none mb-4">
                         Plus Plan
                     </h1>
-                    <p className="font-body text-xl text-white/80 mb-2">12 washes per month</p>
-                    <p className="font-body text-lg text-white/60">10 Standard + 2 Premium Washes</p>
+                    <p className="font-body text-xl text-white/80 mb-2">10 washes per month</p>
+                    <p className="font-body text-lg text-white/60">8 Standard + 2 Premium Washes</p>
                 </div>
 
                 <div className="max-w-2xl mx-auto">
@@ -51,7 +51,7 @@ export default function PlusPlanPage() {
                         <div className="mb-6">
                             <h4 className="text-white text-xl font-semibold mb-3 text-center">Plan Includes:</h4>
                             <div className="bg-black/30 rounded-lg p-4 mb-4">
-                                <p className="text-[#C9A961] font-semibold mb-2">10 Standard Washes</p>
+                                <p className="text-[#C9A961] font-semibold mb-2">8 Standard Washes</p>
                                 <ul className="space-y-2 text-sm">
                                     <li className="flex items-start">
                                         <Check className="w-4 h-4 text-[#C9A961] mr-2 mt-0.5 shrink-0" />

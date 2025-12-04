@@ -193,7 +193,7 @@ const MembershipRegistrationForm = () => {
                     </p>
                     <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[#C9A961]/30">
                         <p className="text-[#C9A961] font-semibold text-lg">
-                            {washTypeLabel} - EGP {selectedPrice}/month
+                            EGP {selectedPrice}/month
                         </p>
                     </div>
                 </div>
