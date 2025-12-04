@@ -7,9 +7,10 @@ export async function POST(request: NextRequest) {
 
         // Get the selected plan details
         const plans: Record<string, { name: string; washes: string; price: string }> = {
-            basic: { name: 'Basic Plan', washes: '3 washes', price: 'EGP 540' },
-            plus: { name: 'Plus Plan', washes: '4 washes', price: 'EGP 720' },
-            elite: { name: 'Elite Plan', washes: '6 washes', price: 'EGP 1050' },
+            saving: { name: 'Saving Plan (باقة التوفير)', washes: '4 washes/month', price: 'EGP 500' },
+            basic: { name: 'Basic Plan (الباقة الأساسية)', washes: '8 washes/month', price: 'EGP 650' },
+            plus: { name: 'Plus Plan (باقة بلس)', washes: '8 Standard + 2 Premium washes', price: 'EGP 850' },
+            elite: { name: 'Elite Plan (باقة النخبة)', washes: '4 Washes + 2 Car Care + 1 Polish & Wax', price: 'EGP 2750' },
         };
 
         const selectedPlan = plans[data.membership as keyof typeof plans];

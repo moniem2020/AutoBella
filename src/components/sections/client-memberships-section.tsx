@@ -5,6 +5,19 @@ import Link from 'next/link';
 
 const plans = [
   {
+    id: 'saving',
+    name: 'Saving Plan',
+    nameAr: 'باقة التوفير',
+    washes: '4 washes/month',
+    washesAr: '٤ غسلات/شهر',
+    descriptionAr: 'باقة اقتصادية للحفاظ على نظافة عربيتك.',
+    descriptionEn: 'Budget-friendly plan to keep your car clean.',
+    note: 'Standard Wash Only',
+    noteAr: 'غسيل خارجي فقط',
+    price: 500,
+    isFeatured: false,
+  },
+  {
     id: 'basic',
     name: 'Basic Plan',
     nameAr: 'الباقة الأساسية',
@@ -21,12 +34,12 @@ const plans = [
     id: 'plus',
     name: 'Plus Plan',
     nameAr: 'باقة بلس',
-    washes: '12 washes/month',
-    washesAr: '١٢ غسلة/شهر',
+    washes: '10 washes/month',
+    washesAr: '١٠ غسلات/شهر',
     descriptionAr: 'خلي عربيتك دايمًا نظيفة ولامعة كل أسبوع.',
     descriptionEn: 'Stay fresh and shiny every week.',
-    note: '10 Standard + 2 Premium Washes',
-    noteAr: '١٠ غسلات عادية + ٢ غسلة مميزة',
+    note: '8 Standard + 2 Premium Washes',
+    noteAr: '٨ غسلات عادية + ٢ غسلة مميزة',
     price: 850,
     isFeatured: true,
   },
@@ -34,13 +47,13 @@ const plans = [
     id: 'elite',
     name: 'Elite Plan',
     nameAr: 'باقة النخبة',
-    washes: '20 Washes/month',
-    washesAr: '٢٠ غسلة/شهر',
+    washes: 'Diverse Services',
+    washesAr: 'خدمات متنوعة',
     descriptionAr: 'العناية المثالية بعربيتك طول السنة.',
     descriptionEn: 'Premium care for your car, all year round.',
-    note: '18 Standard + 2 Premium Washes',
-    noteAr: '١٨ غسلة عادية + ٢ غسلة مميزة',
-    price: 1350,
+    note: '4 Standard Washes + 2 Car Care + 1 Polish & Wax',
+    noteAr: '٤ غسلات عادية + ٢ كار كير + ١ تلميع',
+    price: 2750,
     isFeatured: false,
   },
 ];
@@ -84,7 +97,7 @@ const ClientMembershipsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-end">
           {plans.map((plan) => (
             <div
               key={plan.name}

@@ -18,6 +18,7 @@ const services = [
             'Pre-work inspection (معاينة قبل العمل)',
             'Custom layer count (عدد طبقات مخصص)',
             'Technician assessment (تقييم الفني)',
+            'Includes 1 Premium Wash - Inside & Outside (يشمل غسلة مميزة بره و جوه)',
         ],
     },
     {
@@ -33,6 +34,7 @@ const services = [
             'Technical inspection (معاينة فنية)',
             'Custom pricing (أسعار مخصصة)',
             'Professional service (خدمة احترافية)',
+            'Includes 1 Premium Wash - Inside & Outside (يشمل غسلة مميزة بره و جوه)',
         ],
     },
     {

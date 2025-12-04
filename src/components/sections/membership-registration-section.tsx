@@ -9,6 +9,15 @@ import SearchableCarBrand from '@/components/ui/searchable-car-brand';
 
 const membershipPlans = [
     {
+        id: 'saving',
+        name: 'Saving Plan',
+        nameAr: 'باقة التوفير',
+        washes: '4 washes/month',
+        prices: {
+            standard: 500,
+        },
+    },
+    {
         id: 'basic',
         name: 'Basic Plan',
         nameAr: 'الباقة الأساسية',
@@ -21,7 +30,7 @@ const membershipPlans = [
         id: 'plus',
         name: 'Plus Plan',
         nameAr: 'باقة بلس',
-        washes: '10 Standard + 2 Premium washes/month',
+        washes: '8 Standard + 2 Premium washes/month',
         prices: {
             premium: 850,
         },
@@ -31,9 +40,9 @@ const membershipPlans = [
         id: 'elite',
         name: 'Elite Plan',
         nameAr: 'باقة النخبة',
-        washes: '18 Standard + 2 Premium washes/month',
+        washes: '4 Standard Washes + 2 Car Care + 1 Polish & Wax',
         prices: {
-            premium: 1350,
+            premium: 2750,
         },
     },
 ];
